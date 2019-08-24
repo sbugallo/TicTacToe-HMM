@@ -1,0 +1,81 @@
+.wy-side-nav-search {
+    display: block;
+    width: 300px;
+    padding: .809em;
+    margin-bottom: .809em;
+    z-index: 200;
+    background-color: #d42c2c !important;
+    text-align: center;
+    padding: .809em;
+    display: block;
+    color: #fcfcfc;
+    margin-bottom: .809em;
+}
+
+.wy-side-nav-search>div.version {
+    margin-top: -.4045em;
+    margin-bottom: .809em;
+    font-weight: bold !important;
+    color: #FFFFFF !important;
+}
+
+.wy-nav-side {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 2em;
+    width: 300px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    min-height: 100%;
+    background: #323232 !important;
+    z-index: 200;
+}
+
+.rst-content dl:not(.docutils) dt {
+    display: inline-block;
+    margin: 6px 0;
+    font-size: 90%;
+    line-height: normal;
+    background: #cfd9fc !important;
+    color: #024c8c !important;
+    border-top: solid 3px #00C9F6 !important;
+    padding: 6px;
+    position: relative;
+}
+
+.rst-content .viewcode-link {
+    display: inline-block;
+    color: #ab150d !important;
+    font-size: 80%;
+    padding-left: 24px;
+}
+
+.rst-content dl dt {
+    font-weight: normal !important;
+}
+
+/* override table width restrictions as found on https://github.com/getpelican/pelican/issues/1311 */
+.wy-table-responsive table td, .wy-table-responsive table th {
+    /* !important prevents the common CSS stylesheets from
+       overriding this as on RTD they are loaded after this stylesheet */
+    white-space: normal !important;
+}
+
+.wy-table-responsive {
+    overflow: visible !important;
+}
+
+.wy-nav-content {
+    max-width: none;
+    min-height: 100vh;
+}
+
+p, li {
+    text-align: justify !important;
+}
+
+h1 {
+    color: #024c8c !important;
+}
