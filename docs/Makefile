@@ -18,7 +18,6 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	sphinx-apidoc -M -f -o modules ../ttt
-	rm modules/ttt.rst
 	rm modules/modules.rst
 	for f in modules/ttt.*.rst ; do \
 	    sed -i "1,10d" $$f ; \
