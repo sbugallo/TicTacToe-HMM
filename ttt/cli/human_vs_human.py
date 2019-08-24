@@ -5,8 +5,7 @@ from ttt.play import play_game_player_vs_player
 
 
 def play_human_vs_player() -> None:
-    """
-    """
+    """Plays a game between 2 human players"""
     play_game_player_vs_player()
 
 
