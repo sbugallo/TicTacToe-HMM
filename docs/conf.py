@@ -13,14 +13,15 @@
 
 import os
 import sys
+
 sys.path.insert(0, os.path.abspath('../'))
 
-VERSION = '2019.07'
+VERSION = '2019.08'
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'ttt'
+project = 'TicTacToe MDP'
 copyright = '2019, Sergio Bugallo'
 author = 'Sergio Bugallo'
 
@@ -99,7 +100,7 @@ html_static_path = ['_static']
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 #
-html_logo = './_static/logo-white.svg'
+html_logo = './_static/logo-white.png'
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32

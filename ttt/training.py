@@ -17,8 +17,8 @@ def _run_simulation(iterations: int, cpu_agent: CPUAgent, mode_1: str, mode_2: s
     return cpu_agent
 
 
-def train(output_path: str, lr: float = 0.1, exploration_iterations: int = 25e4,
-          exploitation_iterations: int = 15e4, exploration_exploitation_iterations: int = 10e4) -> CPUAgent:
+def train(output_path: str, lr: float = 0.1, exploration_iterations: int = 2500, exploitation_iterations: int = 1500,
+          exploration_exploitation_iterations: int = 1000) -> CPUAgent:
     """
 
     Parameters
