@@ -1,20 +1,22 @@
-.. ttt documentation master file, created by
-   sphinx-quickstart on Thu Aug 22 20:25:48 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+TicTacToe-MDP
+=============
 
-Welcome to ttt's documentation!
-===============================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. image:: _static/logo-color.png
+   :width: 30%
+   :align: center
 
 
+"Tic-tac-toe (American English), noughts and crosses (British English), or Xs and Os is a paper-and-pencil game for two
+players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their
+marks in a horizontal, vertical, or diagonal row wins the game."
 
-Indices and tables
-==================
+-- Wikipedia
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+..  toctree::
+    :maxdepth: 2
+
+    ai
+    installation
+    usage
+    reference
+

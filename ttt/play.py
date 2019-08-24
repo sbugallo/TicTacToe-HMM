@@ -46,12 +46,13 @@ def play_game_cpu_vs_cpu(player_1, player_2, player_1_mode, player_2_mode, num_r
         else:
             player_2_victories += 1
 
-    if display_text:
-        if game.result > 0:
-            logger.info("Player " + str(game.result) + " wins!")
-        else:
-            logger.info("It's a tie!")
+        if display_text:
+            if game.result > 0:
+                logger.info("Player " + str(game.result) + " wins!")
+            else:
+                logger.info("It's a tie!")
 
+    if display_text:
         logger.info(f"\n\nScores: CPU1 {player_1_victories} - {player_2_victories} CPU2")
 
     return game
