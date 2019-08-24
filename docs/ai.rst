@@ -26,7 +26,7 @@ At each time step :math:`t=0,1,2,...`, the agent receives some representation of
 :math:`S_t \in S`. Based on this state, the agent selects an action :math:`A_t \in A`.
 
 Time is then incremented to the next time step :math:`t+1.`, and the environment is transitioned to a new state
-:math:`S_{t+1} \in S`. At this time, the agent receives a numerical reward :math:`R_{t+1} \in S` for the action
+:math:`S_{t+1} \in S`. At this time, the agent receives a numerical reward :math:`R_{t+1} \in R` for the action
 :math:`A_t` taken from state :math:`S_t`.
 
 Episodic tasks
