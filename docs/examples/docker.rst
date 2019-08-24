@@ -3,9 +3,6 @@
 Docker
 ======
 
-Run app
--------
-
 First, we run the app with an interactive terminal as follows:
 
 .. code-block:: bash
