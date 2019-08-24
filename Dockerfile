@@ -2,11 +2,11 @@ FROM continuumio/miniconda3:4.7.10
 
 LABEL maintainer="Sergio Bugallo <sergiobugalloenjamio@gmail.com>"
 
-RUN mkdir /ttt
+RUN bash -c 'mkdir -p /ttt/envs'
 WORKDIR /ttt
 
-COPY ./env.yml /ttt/env.yml
-RUN conda env create -f /ttt/env.yml
+COPY ./envs/prod.yml /ttt/envs/prod.yml
+RUN conda env create -f /ttt/envs/prod.yml
 RUN echo '. activate ttt' >> ~/.bashrc
 
 COPY . /ttt
