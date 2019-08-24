@@ -1,4 +1,4 @@
-# Tic-Tac-Toe Game
+# Tic-Tac-Toe AI - Markov Decision Process
 
 [![CodeFactor](https://www.codefactor.io/repository/github/sbugallo/tictactoe-mdp/badge)](https://www.codefactor.io/repository/github/sbugallo/tictactoe-mdp)
 [![Build Status](https://travis-ci.com/sbugallo/TicTacToe-MDP.svg)](https://travis-ci.com/sbugallo/TicTacToe-MDP)
