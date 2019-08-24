@@ -25,7 +25,13 @@ if errorlevel 9009 (
 	exit /b 1
 )
 
+sphinx-apidoc.exe -M -f -o modules ../ttt
 %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+rmdir ..\docs /s /q
+mkdir ..\docs
+type nul > ..\docs\.nojekyll
+xcopy _build\html ..\docs /s
+rmdir _build /s /q
 goto end
 
 :help

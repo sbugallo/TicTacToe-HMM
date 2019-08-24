@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ttt package &mdash; Tic-Tac-Toe</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="ttt.models package" href="ttt.models.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TicTacToe MDP
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2019.08
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ai.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ttt.cli.html">ttt.cli package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.models.html">ttt.models package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ttt package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ttt.cli.html">ttt.cli package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ttt.models.html">ttt.models package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ttt.play">ttt.play module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ttt.rewarding">ttt.rewarding module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ttt.training">ttt.training module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TicTacToe MDP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../reference.html">API Reference</a> &raquo;</li>
+        
+      <li>ttt package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/ttt.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+      
+        <a href="ttt.models.html" class="btn btn-neutral float-left" title="ttt.models package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ttt">
+<span id="ttt-package"></span><h1>ttt package<a class="headerlink" href="#module-ttt" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ttt.cli.html">ttt.cli package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ttt.cli.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.cli.html#module-ttt.cli.cpu_vs_cpu">ttt.cli.cpu_vs_cpu module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.cli.html#module-ttt.cli.human_vs_cpu">ttt.cli.human_vs_cpu module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.cli.html#module-ttt.cli.human_vs_human">ttt.cli.human_vs_human module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.cli.html#module-ttt.cli.train">ttt.cli.train module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ttt.models.html">ttt.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ttt.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.models.html#module-ttt.models.agent">ttt.models.agent module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.models.html#module-ttt.models.game">ttt.models.game module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.models.html#module-ttt.models.markov_decision_process">ttt.models.markov_decision_process module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.models.html#module-ttt.models.state">ttt.models.state module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ttt.play">
+<span id="ttt-play-module"></span><h2>ttt.play module<a class="headerlink" href="#module-ttt.play" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ttt.play.play_game">
+<code class="sig-prename descclassname">ttt.play.</code><code class="sig-name descname">play_game</code><span class="sig-paren">(</span><em class="sig-param">game</em>, <em class="sig-param">player_1_move</em>, <em class="sig-param">player_2_move</em>, <em class="sig-param">start</em>, <em class="sig-param">display_board=True</em><span class="sig-paren">)</span> &#x2192; ttt.models.game.Game<a class="reference internal" href="../_modules/ttt/play.html#play_game"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.play.play_game" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>game</strong> – </p></li>
+<li><p><strong>player_1_move</strong> – </p></li>
+<li><p><strong>player_2_move</strong> – </p></li>
+<li><p><strong>start</strong> – </p></li>
+<li><p><strong>display_board</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ttt.play.play_game_cpu_vs_cpu">
+<code class="sig-prename descclassname">ttt.play.</code><code class="sig-name descname">play_game_cpu_vs_cpu</code><span class="sig-paren">(</span><em class="sig-param">player_1</em>, <em class="sig-param">player_2</em>, <em class="sig-param">player_1_mode</em>, <em class="sig-param">player_2_mode</em>, <em class="sig-param">num_rounds</em>, <em class="sig-param">display_board=True</em>, <em class="sig-param">display_text=True</em><span class="sig-paren">)</span> &#x2192; ttt.models.game.Game<a class="reference internal" href="../_modules/ttt/play.html#play_game_cpu_vs_cpu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.play.play_game_cpu_vs_cpu" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>player_1</strong> – </p></li>
+<li><p><strong>player_2</strong> – </p></li>
+<li><p><strong>player_1_mode</strong> – </p></li>
+<li><p><strong>player_2_mode</strong> – </p></li>
+<li><p><strong>num_rounds</strong> – </p></li>
+<li><p><strong>display_board</strong> – </p></li>
+<li><p><strong>display_text</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>AssertionError:</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ttt.play.play_game_player_vs_comp">
+<code class="sig-prename descclassname">ttt.play.</code><code class="sig-name descname">play_game_player_vs_comp</code><span class="sig-paren">(</span><em class="sig-param">cpu_player</em>, <em class="sig-param">cpu_player_mode</em><span class="sig-paren">)</span> &#x2192; ttt.models.game.Game<a class="reference internal" href="../_modules/ttt/play.html#play_game_player_vs_comp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.play.play_game_player_vs_comp" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cpu_player</strong> – </p></li>
+<li><p><strong>cpu_player_mode</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ttt.play.play_game_player_vs_player">
+<code class="sig-prename descclassname">ttt.play.</code><code class="sig-name descname">play_game_player_vs_player</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/play.html#play_game_player_vs_player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.play.play_game_player_vs_player" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-ttt.rewarding">
+<span id="ttt-rewarding-module"></span><h2>ttt.rewarding module<a class="headerlink" href="#module-ttt.rewarding" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ttt.rewarding.get_move">
+<code class="sig-prename descclassname">ttt.rewarding.</code><code class="sig-name descname">get_move</code><span class="sig-paren">(</span><em class="sig-param">state_1: ttt.models.state.State</em>, <em class="sig-param">state_2: ttt.models.state.State</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../_modules/ttt/rewarding.html#get_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.rewarding.get_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the different cell between <cite>state_1</cite> and <cite>state_2</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state_1</strong> (<em>ttt.models.State</em>) – Grid representation.</p></li>
+<li><p><strong>state_2</strong> (<em>ttt.models.State</em>) – Grid representation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>move</strong> – Cell that differs from one state to the other.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ttt.rewarding.rewarding">
+<code class="sig-prename descclassname">ttt.rewarding.</code><code class="sig-name descname">rewarding</code><span class="sig-paren">(</span><em class="sig-param">game: ttt.models.game.Game</em>, <em class="sig-param">player_number: int</em>, <em class="sig-param">lr: float</em><span class="sig-paren">)</span> &#x2192; ttt.models.agent.CPUAgent<a class="reference internal" href="../_modules/ttt/rewarding.html#rewarding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.rewarding.rewarding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the sequence of states the completed game has.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>game</strong> (<em>ttt.models.Game</em>) – </p></li>
+<li><p><strong>player_number</strong> – </p></li>
+<li><p><strong>lr</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cpu_agent</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ttt.models.CPUAgent</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ttt.training">
+<span id="ttt-training-module"></span><h2>ttt.training module<a class="headerlink" href="#module-ttt.training" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ttt.training.train">
+<code class="sig-prename descclassname">ttt.training.</code><code class="sig-name descname">train</code><span class="sig-paren">(</span><em class="sig-param">output_path: str</em>, <em class="sig-param">lr: float = 0.1</em>, <em class="sig-param">exploration_iterations: int = 2500</em>, <em class="sig-param">exploitation_iterations: int = 1500</em>, <em class="sig-param">exploration_exploitation_iterations: int = 1000</em><span class="sig-paren">)</span> &#x2192; ttt.models.agent.CPUAgent<a class="reference internal" href="../_modules/ttt/training.html#train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.training.train" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_path</strong> – </p></li>
+<li><p><strong>lr</strong> – </p></li>
+<li><p><strong>exploration_iterations</strong> – </p></li>
+<li><p><strong>exploitation_iterations</strong> – </p></li>
+<li><p><strong>exploration_exploitation_iterations</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cpu_agent</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ttt.models.CPUAgent</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="ttt.models.html" class="btn btn-neutral float-left" title="ttt.models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sergio Bugallo
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

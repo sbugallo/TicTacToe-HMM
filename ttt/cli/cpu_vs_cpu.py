@@ -26,7 +26,7 @@ def play_cpu_vs_cpu(cpu_1_weights_path, cpu_1_mode, cpu_2_weights_path, cpu_2_mo
     cpu_1_agent.load(cpu_1_weights_path)
     cpu_2_agent.load(cpu_2_weights_path)
 
-    play_game_cpu_vs_cpu(cpu_1_agent, cpu_2_agent, cpu_1_mode, cpu_2_mode, num_rounds, display_board, display_text)
+    play_game_cpu_vs_cpu(cpu_1_agent, cpu_2_agent, cpu_1_mode, cpu_2_mode, num_rounds, display_board)
 
 
 @logger.catch

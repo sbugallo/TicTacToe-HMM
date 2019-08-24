@@ -12,5 +12,9 @@ install:
   - conda env create -f envs/dev.yml
   - source activate ttt
   - python setup.py install
+before_script:
+  - flake8
 script:
   - pytest
+after_success:
+  - coveralls
