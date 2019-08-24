@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; Tic-Tac-Toe</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="prev" title="Markov Decision Processes" href="ai.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> TicTacToe MDP
+          
+
+          
+            
+            <img src="_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2019.08
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ai.html">Markov Decision Processes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clone-the-ttt-s-repository">Clone the ttt’s repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-requirements">Install requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker">Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Prerequisites</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TicTacToe MDP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ai.html" class="btn btn-neutral float-left" title="Markov Decision Processes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Prerequisites:</p>
+<ul class="simple">
+<li><p><cite>conda</cite> (included in Miniconda 3 and Anaconda 3 distributions)</p></li>
+</ul>
+</div>
+<div class="section" id="clone-the-ttt-s-repository">
+<h2>Clone the ttt’s repository<a class="headerlink" href="#clone-the-ttt-s-repository" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/sbugallo/TicTacToe-MDP.git
+<span class="nb">cd</span> TicTacToe-MDP
+</pre></div>
+</div>
+<p>The following instructions assume that you are located in the root of <cite>TicTacToe-MDP’</cite>.</p>
+</div>
+<div class="section" id="install-requirements">
+<h2>Install requirements<a class="headerlink" href="#install-requirements" title="Permalink to this headline">¶</a></h2>
+<p><cite>conda</cite> is the recommended way for installing all the requirements. You can install <cite>conda</cite> from
+<a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">this link</a>. The following instructions assume that you have
+conda installed on your system.</p>
+<p>Predefined conda environments for different use cases are provided under <cite>./envs</cite>. There are 2
+available environments:</p>
+<ul class="simple">
+<li><p><strong>dev.yml</strong>: for simple execution usage.</p></li>
+<li><p><strong>prod.yml</strong>: to generate docs, test and develope new features.</p></li>
+</ul>
+<p>You can create a new conda environment as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env create -f ./envs/<span class="o">{</span>dev.yml <span class="p">|</span> prod.yml<span class="o">}</span>
+</pre></div>
+</div>
+<p>Usage examples:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env create -f ./envs/dev.yml
+conda env create -f ./envs/prod.yml
+</pre></div>
+</div>
+<p>Once our environment is installed, we have to activate it running the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> activate ttt
+</pre></div>
+</div>
+<p>Assuming that you have the environment activated, we install <cite>ttt</cite> module running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py install
+</pre></div>
+</div>
+<p>If you plan to modify de source code, run some tests or generate documentation you should install the module in
+development mode:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py develop
+</pre></div>
+</div>
+<p>This will also install some scripts that can be run directly in your terminal:</p>
+<ul class="simple">
+<li><p><cite>ttt-human-vs-human</cite></p></li>
+<li><p><cite>ttt-human-vs-cpu</cite></p></li>
+<li><p><cite>ttt-cpu-vs-cpu</cite></p></li>
+<li><p><cite>ttt-train</cite></p></li>
+</ul>
+<p>To see how they work, please go to <a class="reference internal" href="usage.html#usage"><span class="std std-ref">Usage</span></a> section</p>
+</div>
+<div class="section" id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<p>To facilitate the usage, a docker image is available at
+<a class="reference external" href="https://hub.docker.com/r/sbugallo/ttt">https://hub.docker.com/r/sbugallo/ttt</a> .</p>
+<div class="section" id="id2">
+<h3>Prerequisites<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Prerequisites:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>docker</cite> (see <a class="reference external" href="https://docs.docker.com/install/">https://docs.docker.com/install/</a>)</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ai.html" class="btn btn-neutral float-left" title="Markov Decision Processes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sergio Bugallo
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

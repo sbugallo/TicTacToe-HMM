@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ttt.cli package &mdash; Tic-Tac-Toe</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ttt.models package" href="ttt.models.html" />
+    <link rel="prev" title="API Reference" href="../reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TicTacToe MDP
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2019.08
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ai.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ttt.cli package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ttt.cli.cpu_vs_cpu">ttt.cli.cpu_vs_cpu module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ttt.cli.human_vs_cpu">ttt.cli.human_vs_cpu module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ttt.cli.human_vs_human">ttt.cli.human_vs_human module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ttt.cli.train">ttt.cli.train module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.models.html">ttt.models package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.html">ttt package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TicTacToe MDP</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../reference.html">API Reference</a> &raquo;</li>
+        
+      <li>ttt.cli package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/ttt.cli.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="ttt.models.html" class="btn btn-neutral float-right" title="ttt.models package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../reference.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ttt.cli">
+<span id="ttt-cli-package"></span><h1>ttt.cli package<a class="headerlink" href="#module-ttt.cli" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ttt.cli.cpu_vs_cpu">
+<span id="ttt-cli-cpu-vs-cpu-module"></span><h2>ttt.cli.cpu_vs_cpu module<a class="headerlink" href="#module-ttt.cli.cpu_vs_cpu" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ttt.cli.cpu_vs_cpu.main">
+<code class="sig-prename descclassname">ttt.cli.cpu_vs_cpu.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ttt/cli/cpu_vs_cpu.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.cpu_vs_cpu.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ttt.cli.cpu_vs_cpu.play_cpu_vs_cpu">
+<code class="sig-prename descclassname">ttt.cli.cpu_vs_cpu.</code><code class="sig-name descname">play_cpu_vs_cpu</code><span class="sig-paren">(</span><em class="sig-param">cpu_1_weights_path</em>, <em class="sig-param">cpu_1_mode</em>, <em class="sig-param">cpu_2_weights_path</em>, <em class="sig-param">cpu_2_mode</em>, <em class="sig-param">num_rounds</em>, <em class="sig-param">display_board=True</em>, <em class="sig-param">display_text=True</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/cli/cpu_vs_cpu.html#play_cpu_vs_cpu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.cpu_vs_cpu.play_cpu_vs_cpu" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cpu_1_weights_path</strong> – </p></li>
+<li><p><strong>cpu_1_mode</strong> – </p></li>
+<li><p><strong>cpu_2_weights_path</strong> – </p></li>
+<li><p><strong>cpu_2_mode</strong> – </p></li>
+<li><p><strong>num_rounds</strong> – </p></li>
+<li><p><strong>display_board</strong> – </p></li>
+<li><p><strong>display_text</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ttt.cli.human_vs_cpu">
+<span id="ttt-cli-human-vs-cpu-module"></span><h2>ttt.cli.human_vs_cpu module<a class="headerlink" href="#module-ttt.cli.human_vs_cpu" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ttt.cli.human_vs_cpu.main">
+<code class="sig-prename descclassname">ttt.cli.human_vs_cpu.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ttt/cli/human_vs_cpu.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.human_vs_cpu.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ttt.cli.human_vs_cpu.play_human_vs_cpu">
+<code class="sig-prename descclassname">ttt.cli.human_vs_cpu.</code><code class="sig-name descname">play_human_vs_cpu</code><span class="sig-paren">(</span><em class="sig-param">cpu_weights_path</em>, <em class="sig-param">cpu_mode</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/cli/human_vs_cpu.html#play_human_vs_cpu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.human_vs_cpu.play_human_vs_cpu" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cpu_weights_path</strong> – </p></li>
+<li><p><strong>cpu_mode</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ttt.cli.human_vs_human">
+<span id="ttt-cli-human-vs-human-module"></span><h2>ttt.cli.human_vs_human module<a class="headerlink" href="#module-ttt.cli.human_vs_human" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ttt.cli.human_vs_human.main">
+<code class="sig-prename descclassname">ttt.cli.human_vs_human.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ttt/cli/human_vs_human.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.human_vs_human.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ttt.cli.human_vs_human.play_human_vs_player">
+<code class="sig-prename descclassname">ttt.cli.human_vs_human.</code><code class="sig-name descname">play_human_vs_player</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/cli/human_vs_human.html#play_human_vs_player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.human_vs_human.play_human_vs_player" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-ttt.cli.train">
+<span id="ttt-cli-train-module"></span><h2>ttt.cli.train module<a class="headerlink" href="#module-ttt.cli.train" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ttt.cli.train.main">
+<code class="sig-prename descclassname">ttt.cli.train.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ttt/cli/train.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.train.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ttt.cli.train.train_agent">
+<code class="sig-prename descclassname">ttt.cli.train.</code><code class="sig-name descname">train_agent</code><span class="sig-paren">(</span><em class="sig-param">output_path: str</em>, <em class="sig-param">lr: float = 0.1</em>, <em class="sig-param">exploration_iterations: int = 2500</em>, <em class="sig-param">exploitation_iterations: int = 1500</em>, <em class="sig-param">exploration_exploitation_iterations: int = 1000</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ttt/cli/train.html#train_agent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.train.train_agent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ttt.models.html" class="btn btn-neutral float-right" title="ttt.models package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../reference.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sergio Bugallo
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

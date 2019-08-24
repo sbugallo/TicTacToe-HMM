@@ -23,3 +23,9 @@ help:
 	    sed -i "1,10d" $$f ; \
 	done
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+	rm -rf ../docs
+    mkdir ../docs
+    touch ..\docs\.nojekyll
+    cp -r _build/html/* ../docs
+    rm -rf _build
