@@ -5,13 +5,16 @@ from ttt.models import CPUAgent
 from ttt.play import play_game_player_vs_comp
 
 
-def play_human_vs_cpu(cpu_weights_path, cpu_mode) -> None:
+def play_human_vs_cpu(cpu_weights_path: str, cpu_mode: str) -> None:
     """
+    Plays a game between a human player and a CPU agent.
 
     Parameters
     ----------
-    cpu_weights_path
-    cpu_mode
+    cpu_weights_path: str
+        Path to the JSON file with the first player's weights
+    cpu_mode: str
+        Player 1 policy. Whether best or random.
     """
 
     assert cpu_mode in {"random", "best"}

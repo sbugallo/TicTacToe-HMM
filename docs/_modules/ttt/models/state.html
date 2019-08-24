@@ -194,7 +194,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">next_states_transitions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">next_states_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">next_states_transitions</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-<div class="viewcode-block" id="State.update_transition_weight"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.state.State.update_transition_weight">[docs]</a>    <span class="k">def</span> <span class="nf">update_transition_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition</span><span class="p">,</span> <span class="n">increase</span><span class="p">):</span>
+<div class="viewcode-block" id="State.update_transition_weight"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.state.State.update_transition_weight">[docs]</a>    <span class="k">def</span> <span class="nf">update_transition_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transition</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">increase</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the transition weights.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        transition: int</span>
+<span class="sd">            Transition move.</span>
+<span class="sd">        increase: float</span>
+<span class="sd">            Value to be added</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">next_states_transitions</span> <span class="o">==</span> <span class="n">transition</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">next_states_values</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+=</span> <span class="n">increase</span></div>
 

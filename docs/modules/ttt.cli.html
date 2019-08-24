@@ -197,17 +197,18 @@
 
 <dl class="function">
 <dt id="ttt.cli.cpu_vs_cpu.play_cpu_vs_cpu">
-<code class="sig-prename descclassname">ttt.cli.cpu_vs_cpu.</code><code class="sig-name descname">play_cpu_vs_cpu</code><span class="sig-paren">(</span><em class="sig-param">cpu_1_weights_path</em>, <em class="sig-param">cpu_1_mode</em>, <em class="sig-param">cpu_2_weights_path</em>, <em class="sig-param">cpu_2_mode</em>, <em class="sig-param">num_rounds</em>, <em class="sig-param">display_board=True</em>, <em class="sig-param">display_text=True</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/cli/cpu_vs_cpu.html#play_cpu_vs_cpu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.cpu_vs_cpu.play_cpu_vs_cpu" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<code class="sig-prename descclassname">ttt.cli.cpu_vs_cpu.</code><code class="sig-name descname">play_cpu_vs_cpu</code><span class="sig-paren">(</span><em class="sig-param">cpu_1_weights_path: str</em>, <em class="sig-param">cpu_1_mode: str</em>, <em class="sig-param">cpu_2_weights_path: str</em>, <em class="sig-param">cpu_2_mode: str</em>, <em class="sig-param">num_rounds: int</em>, <em class="sig-param">display_board: bool = True</em>, <em class="sig-param">display_text: bool = True</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/cli/cpu_vs_cpu.html#play_cpu_vs_cpu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.cpu_vs_cpu.play_cpu_vs_cpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays a game between two cpu players.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cpu_1_weights_path</strong> – </p></li>
-<li><p><strong>cpu_1_mode</strong> – </p></li>
-<li><p><strong>cpu_2_weights_path</strong> – </p></li>
-<li><p><strong>cpu_2_mode</strong> – </p></li>
-<li><p><strong>num_rounds</strong> – </p></li>
-<li><p><strong>display_board</strong> – </p></li>
-<li><p><strong>display_text</strong> – </p></li>
+<li><p><strong>cpu_1_weights_path</strong> (<em>str</em>) – Path to the JSON file with the first player’s weights</p></li>
+<li><p><strong>cpu_1_mode</strong> (<em>str</em>) – Player 1 policy. Whether best or random.</p></li>
+<li><p><strong>cpu_2_weights_path</strong> (<em>str</em>) – Path to the JSON file with the second player’s weights</p></li>
+<li><p><strong>cpu_2_mode</strong> (<em>str</em>) – Player 1 policy. Whether best or random.</p></li>
+<li><p><strong>num_rounds</strong> (<em>int</em>) – Number or rounds to be played.</p></li>
+<li><p><strong>display_board</strong> (<em>bool</em>) – Whether to display the board after each move.</p></li>
+<li><p><strong>display_text</strong> (<em>bool</em>) – Whether to display game information</p></li>
 </ul>
 </dd>
 </dl>
@@ -223,12 +224,13 @@
 
 <dl class="function">
 <dt id="ttt.cli.human_vs_cpu.play_human_vs_cpu">
-<code class="sig-prename descclassname">ttt.cli.human_vs_cpu.</code><code class="sig-name descname">play_human_vs_cpu</code><span class="sig-paren">(</span><em class="sig-param">cpu_weights_path</em>, <em class="sig-param">cpu_mode</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/cli/human_vs_cpu.html#play_human_vs_cpu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.human_vs_cpu.play_human_vs_cpu" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<code class="sig-prename descclassname">ttt.cli.human_vs_cpu.</code><code class="sig-name descname">play_human_vs_cpu</code><span class="sig-paren">(</span><em class="sig-param">cpu_weights_path: str</em>, <em class="sig-param">cpu_mode: str</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/cli/human_vs_cpu.html#play_human_vs_cpu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.human_vs_cpu.play_human_vs_cpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays a game between a human player and a CPU agent.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cpu_weights_path</strong> – </p></li>
-<li><p><strong>cpu_mode</strong> – </p></li>
+<li><p><strong>cpu_weights_path</strong> (<em>str</em>) – Path to the JSON file with the first player’s weights</p></li>
+<li><p><strong>cpu_mode</strong> (<em>str</em>) – Player 1 policy. Whether best or random.</p></li>
 </ul>
 </dd>
 </dl>
@@ -245,7 +247,8 @@
 <dl class="function">
 <dt id="ttt.cli.human_vs_human.play_human_vs_player">
 <code class="sig-prename descclassname">ttt.cli.human_vs_human.</code><code class="sig-name descname">play_human_vs_player</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/cli/human_vs_human.html#play_human_vs_player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.human_vs_human.play_human_vs_player" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Plays a game between 2 human players</p>
+</dd></dl>
 
 </div>
 <div class="section" id="module-ttt.cli.train">
@@ -257,8 +260,20 @@
 
 <dl class="function">
 <dt id="ttt.cli.train.train_agent">
-<code class="sig-prename descclassname">ttt.cli.train.</code><code class="sig-name descname">train_agent</code><span class="sig-paren">(</span><em class="sig-param">output_path: str</em>, <em class="sig-param">lr: float = 0.1</em>, <em class="sig-param">exploration_iterations: int = 2500</em>, <em class="sig-param">exploitation_iterations: int = 1500</em>, <em class="sig-param">exploration_exploitation_iterations: int = 1000</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ttt/cli/train.html#train_agent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.train.train_agent" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-prename descclassname">ttt.cli.train.</code><code class="sig-name descname">train_agent</code><span class="sig-paren">(</span><em class="sig-param">output_path: str</em>, <em class="sig-param">lr: float = 0.1</em>, <em class="sig-param">exploration_iterations: int = 2500</em>, <em class="sig-param">exploitation_iterations: int = 1500</em>, <em class="sig-param">exploration_exploitation_iterations: int = 1000</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/cli/train.html#train_agent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.cli.train.train_agent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trains a new agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_path</strong> (<em>str</em>) – Where to save agent’s weights. E.g., weights.json.</p></li>
+<li><p><strong>lr</strong> (<em>float</em>) – Learning rate.</p></li>
+<li><p><strong>exploration_iterations</strong> (<em>int</em>) – Number of iterations during exploration phase.</p></li>
+<li><p><strong>exploitation_iterations</strong> (<em>int</em>) – Number of iterations during exploitation phase.</p></li>
+<li><p><strong>exploration_exploitation_iterations</strong> (<em>int</em>) – Number of iterations during exploration-exploitation phase.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 </div>

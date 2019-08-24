@@ -6,6 +6,7 @@
 
 <img src="https://raw.githubusercontent.com/sbugallo/TicTacToe-MDP/dev/docs/_static/logo-color.png" width="50%" />
 
+See [documentation](https://sbugallo.github.io/TicTacToe-MDP/)
 ## Game description
 
 "Tic-tac-toe (American English), noughts and crosses (British English), or Xs and Os is a paper-and-pencil game for two
