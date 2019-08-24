@@ -35,7 +35,17 @@ class State:
         self.next_states_transitions = np.where(self.grid == 0)[0]
         self.next_states_values = np.zeros(self.next_states_transitions.shape)
 
-    def update_transition_weight(self, transition, increase):
+    def update_transition_weight(self, transition: int, increase: float) -> None:
+        """
+        Updates the transition weights.
+
+        Parameters
+        ----------
+        transition: int
+            Transition move.
+        increase: float
+            Value to be added
+        """
         idx = np.where(self.next_states_transitions == transition)[0][0]
         self.next_states_values[idx] += increase
 

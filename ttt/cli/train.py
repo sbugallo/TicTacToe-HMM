@@ -5,7 +5,7 @@ from ttt.training import train
 
 
 def train_agent(output_path: str, lr: float = 0.1, exploration_iterations: int = 2500,
-                exploitation_iterations: int = 1500, exploration_exploitation_iterations: int = 1000):
+                exploitation_iterations: int = 1500, exploration_exploitation_iterations: int = 1000) -> None:
     """
     Trains a new agent.
 

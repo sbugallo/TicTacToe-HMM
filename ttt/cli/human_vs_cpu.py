@@ -5,7 +5,7 @@ from ttt.models import CPUAgent
 from ttt.play import play_game_player_vs_comp
 
 
-def play_human_vs_cpu(cpu_weights_path, cpu_mode) -> None:
+def play_human_vs_cpu(cpu_weights_path: str, cpu_mode: str) -> None:
     """
     Plays a game between a human player and a CPU agent.
 
