@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3
+FROM continuumio/miniconda3:4.7.10
 
 LABEL maintainer="Sergio Bugallo <sergiobugalloenjamio@gmail.com>"
 

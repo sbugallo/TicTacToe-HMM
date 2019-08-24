@@ -1,5 +1,8 @@
 # Tic-Tac-Toe Game
 
+[![CodeFactor](https://www.codefactor.io/repository/github/sbugallo/tictactoe-mdp/badge)](https://www.codefactor.io/repository/github/sbugallo/tictactoe-mdp)
+[![Build Status](https://travis-ci.com/sbugallo/TicTacToe-MDP.svg?branch=master)](https://travis-ci.com/sbugallo/TicTacToe-MDP)
+
 ## Game description
 
 ## Usage
