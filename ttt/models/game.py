@@ -115,7 +115,7 @@ class Game:
             elif value == 2:
                 mark = "O"
             else:
-                mark = " "
+                mark = f"{index + 1}"
 
             positions[f"p{index}"] = mark
 
