@@ -56,7 +56,7 @@ def test_cpuagent_correct_initialization():
 
     assert agent.current_state is None
     assert agent.grid is None
-    assert len(agent.mdp.states) == 0
+    assert agent.mdp.states
 
 
 def test_cpuagent_updates_grid_correctly():
@@ -114,7 +114,7 @@ def test_cpuagent_serializes_correctly():
 
     assert "mdp" in serialized_agent
     assert "states" in serialized_agent["mdp"]
-    assert len(serialized_agent["mdp"]["states"]) == 0
+    assert serialized_agent["mdp"]["states"]
 
 
 def test_cpuagent_deserializes_correctly():
@@ -122,7 +122,7 @@ def test_cpuagent_deserializes_correctly():
     serialized_agent = {'mdp': {'states': {}}}
     agent.deserialize(serialized_agent)
 
-    assert len(agent.mdp.states) == 0
+    assert agent.mdp.states
 
 
 def test_cpuagent_saves_correctly(tmpdir):
@@ -136,7 +136,7 @@ def test_cpuagent_saves_correctly(tmpdir):
 
     assert "mdp" in serialized_agent
     assert "states" in serialized_agent["mdp"]
-    assert len(serialized_agent["mdp"]["states"]) == 0
+    assert serialized_agent["mdp"]["states"]
 
 
 def test_cpuagent_loads_correctly(tmpdir):
@@ -147,7 +147,7 @@ def test_cpuagent_loads_correctly(tmpdir):
     weights_path.write_text('{"mdp": {"states": {}}}')
     agent.load(weights_path)
 
-    assert len(agent.mdp.states) == 0
+    assert agent.mdp.states
 
 
 def test_humanagent_correct_initialization():
