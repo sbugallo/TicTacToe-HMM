@@ -1,6 +1,7 @@
 # .coveragerc to control coverage.py
 
 [run]
+include = ttt/*
 omit =
         *__init__*
         */usr/local/lib*

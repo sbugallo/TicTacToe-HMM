@@ -15,6 +15,6 @@ install:
 before_script:
   - flake8
 script:
-  - pytest
+  - pytest -v --junitxml=test_report.xml --cov-report xml --cov=. tests/unit
 after_success:
   - coveralls
