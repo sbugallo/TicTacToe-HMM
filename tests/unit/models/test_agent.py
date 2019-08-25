@@ -56,7 +56,7 @@ def test_cpuagent_correct_initialization():
 
     assert agent.current_state is None
     assert agent.grid is None
-    assert agent.mdp.states
+    assert not agent.mdp.states
 
 
 def test_cpuagent_updates_grid_correctly():
@@ -114,7 +114,7 @@ def test_cpuagent_serializes_correctly():
 
     assert "mdp" in serialized_agent
     assert "states" in serialized_agent["mdp"]
-    assert serialized_agent["mdp"]["states"]
+    assert not serialized_agent["mdp"]["states"]
 
 
 def test_cpuagent_deserializes_correctly():
