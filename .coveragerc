@@ -2,6 +2,7 @@
 
 [run]
 include = ttt/*
+source = ttt
 omit =
         *__init__*
         */usr/local/lib*
