@@ -15,6 +15,8 @@ install:
 before_script:
   - flake8
 script:
-  - pytest -v --junitxml=test_report.xml --cov-report xml --cov=. tests/unit
+  - pytest -v --cov-report xml --cov=ttt tests
+  - py.test -v --cov-config .coveragerc --cov=ttt tests
 after_success:
+  - coverage
   - coveralls
