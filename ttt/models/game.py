@@ -94,9 +94,10 @@ class Game:
 
         count = 9 - np.count_nonzero(self.grid)
 
-        if count == 0 and self.result < 0:
+        if count == 0:
             self.grid_is_full = True
-            self.result = 0
+            if self.result < 0:
+                self.result = 0
 
     def check_victory(self) -> None:
         """Checks if there is 3 consecutives marks of the same player."""
