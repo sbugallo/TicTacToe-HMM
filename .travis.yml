@@ -20,8 +20,6 @@ script:
   - pytest --cov=ttt tests/
   - pytest -v --cov-report xml --cov=ttt tests
   - py.test -v --cov-config .coveragerc --cov=ttt tests
-  - coverage
-  - coverage report --show-missing
 after_success:
   - coverage
   - coveralls
