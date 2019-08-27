@@ -67,7 +67,8 @@ class TicTacToeMDP:
             if np.array_equal(grid, state.grid):
                 return state
 
-        raise ValueError(f"Grid {grid} could not be found in saved states {self.states}")
+        raise ValueError(f"Grid {grid} could not be found in saved states "
+                         f"{[state.grid for state in self.states.values()]}")
 
     def update_state(self, state: State) -> None:
         """
