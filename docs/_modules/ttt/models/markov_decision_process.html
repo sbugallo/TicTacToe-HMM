@@ -226,7 +226,8 @@
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">state</span><span class="o">.</span><span class="n">grid</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">state</span>
 
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Grid </span><span class="si">{grid}</span><span class="s2"> could not be found in saved states </span><span class="si">{self.states}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Grid </span><span class="si">{grid}</span><span class="s2"> could not be found in saved states &quot;</span>
+                         <span class="n">f</span><span class="s2">&quot;{[state.grid for state in self.states.values()]}&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TicTacToeMDP.update_state"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.markov_decision_process.TicTacToeMDP.update_state">[docs]</a>    <span class="k">def</span> <span class="nf">update_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>

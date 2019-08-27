@@ -7,6 +7,8 @@ omit =
         *eggs*
         *mock_*
         *test_*
+        *ttt/cli*
+        *ttt/play.py*
 
 [report]
 exclude_lines =

@@ -1,5 +1,7 @@
-from loguru import logger
 from typing import Callable
+
+from loguru import logger
+
 from .models import Game, HumanAgent, CPUAgent
 from .rewarding import rewarding
 
@@ -49,7 +51,7 @@ def play_game_cpu_vs_cpu(player_1: CPUAgent, player_2: CPUAgent, player_1_mode: 
 
         if game.result == 1:
             player_1_victories += 1
-        else:
+        elif game.result == 2:
             player_2_victories += 1
 
         if display_text:
@@ -93,7 +95,7 @@ def play_game_player_vs_comp(cpu_player: CPUAgent, cpu_player_mode: str) -> Game
 
         if game.result == 1:
             human_player_victories += 1
-        else:
+        elif game.result == 2:
             cpu_player_victories += 1
 
         if game.result == 1:
@@ -135,7 +137,7 @@ def play_game_player_vs_player() -> None:
 
         if game.result == 1:
             player_1_victories += 1
-        else:
+        elif game.result == 2:
             player_2_victories += 1
 
         if game.result == 1:
