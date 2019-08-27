@@ -1,5 +1,3 @@
-from os import system, name
-
 import numpy as np
 from loguru import logger
 
@@ -94,9 +92,10 @@ class Game:
 
         count = 9 - np.count_nonzero(self.grid)
 
-        if count == 0 and self.result < 0:
+        if count == 0:
             self.grid_is_full = True
-            self.result = 0
+            if self.result < 0:
+                self.result = 0
 
     def check_victory(self) -> None:
         """Checks if there is 3 consecutives marks of the same player."""
@@ -105,7 +104,7 @@ class Game:
         self.check_vertical_win()
         self.check_diagonal_win()
 
-    def print_board(self) -> None:
+    def print_board(self) -> dict:
         """Displays the current grid."""
 
         positions = {}
@@ -115,12 +114,9 @@ class Game:
             elif value == 2:
                 mark = "O"
             else:
-                mark = " "
+                mark = f"{index + 1}"
 
             positions[f"p{index}"] = mark
-
-        command = 'cls' if name == 'nt' else 'clear'
-        system(command)
 
         logger.info("""
                       {p0} | {p1} | {p2}
@@ -129,3 +125,5 @@ class Game:
                      -----------
                       {p6} | {p7} | {p8}
                     """.format(**positions))
+
+        return positions

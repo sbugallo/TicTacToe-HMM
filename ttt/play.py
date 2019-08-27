@@ -1,30 +1,38 @@
+from typing import Callable
+
 from loguru import logger
 
-from .models import Game, HumanAgent
+from .models import Game, HumanAgent, CPUAgent
 from .rewarding import rewarding
 
 
-def play_game_cpu_vs_cpu(player_1, player_2, player_1_mode, player_2_mode, num_rounds, display_board=True,
-                         display_text=True) -> Game:
+def play_game_cpu_vs_cpu(player_1: CPUAgent, player_2: CPUAgent, player_1_mode: str, player_2_mode: str,
+                         num_rounds: int, display_board: bool = True, display_text: bool = True) -> Game:
     """
+    Plays a game between two cpu players.
 
     Parameters
     ----------
-    player_1
-    player_2
-    player_1_mode
-    player_2_mode
-    num_rounds
-    display_board
-    display_text
+    player_1: ttt.models.CPUAgent
+    player_2: ttt.models.CPUAgent
+    player_1_mode: str
+        Whether best or random.
+    player_2_mode: str
+        Whether best or random.
+    num_rounds: int
+        Number or rounds to be played.
+    display_board: bool
+        Whether to display the board after each move.
+    display_text: bool
+        Whether to display game information
 
     Returns
     -------
+    played_game: ttt.models.Game
 
     Raises
     ------
-    AssertionError:
-
+    AssertionError: if `num_rounds` < 1
     """
 
     assert num_rounds > 0
@@ -43,7 +51,7 @@ def play_game_cpu_vs_cpu(player_1, player_2, player_1_mode, player_2_mode, num_r
 
         if game.result == 1:
             player_1_victories += 1
-        else:
+        elif game.result == 2:
             player_2_victories += 1
 
         if display_text:
@@ -58,17 +66,19 @@ def play_game_cpu_vs_cpu(player_1, player_2, player_1_mode, player_2_mode, num_r
     return game
 
 
-def play_game_player_vs_comp(cpu_player, cpu_player_mode) -> Game:
+def play_game_player_vs_comp(cpu_player: CPUAgent, cpu_player_mode: str) -> Game:
     """
+    Plays a game between a human player and a CPU agent.
 
     Parameters
     ----------
-    cpu_player
-    cpu_player_mode
+    cpu_player: ttt.models.CPUAgent
+    cpu_player_mode: str
+        Whether best or random.
 
     Returns
     -------
-
+    played_game: ttt.models.Game
     """
 
     human_player = HumanAgent()
@@ -85,7 +95,7 @@ def play_game_player_vs_comp(cpu_player, cpu_player_mode) -> Game:
 
         if game.result == 1:
             human_player_victories += 1
-        else:
+        elif game.result == 2:
             cpu_player_victories += 1
 
         if game.result == 1:
@@ -111,8 +121,7 @@ def play_game_player_vs_comp(cpu_player, cpu_player_mode) -> Game:
 
 
 def play_game_player_vs_player() -> None:
-    """
-    """
+    """Plays a game between 2 human players"""
 
     player_1 = HumanAgent()
     player_2 = HumanAgent()
@@ -128,7 +137,7 @@ def play_game_player_vs_player() -> None:
 
         if game.result == 1:
             player_1_victories += 1
-        else:
+        elif game.result == 2:
             player_2_victories += 1
 
         if game.result == 1:
@@ -150,20 +159,27 @@ def play_game_player_vs_player() -> None:
     return
 
 
-def play_game(game, player_1_move, player_2_move, start, display_board=True) -> Game:
+def play_game(game: Game, player_1_move: Callable, player_2_move: Callable, start: int,
+              display_board: bool = True) -> Game:
     """
+    Runs 1 round of a game.
 
     Parameters
     ----------
-    game
-    player_1_move
-    player_2_move
-    start
-    display_board
+    game: ttt.models.Game
+        Game to be played.
+    player_1_move: method
+        Player's method that computes the next move.
+    player_2_move: method
+        Player's method that computes the next move.
+    start: int
+        Which player will start.
+    display_board: bool
+        Whether to display the board after each move or not.
 
     Returns
     -------
-
+    played_game: ttt.models.Game
     """
 
     if start == 0:

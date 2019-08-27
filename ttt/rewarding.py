@@ -38,12 +38,16 @@ def rewarding(game: Game, player_number: int, lr: float) -> CPUAgent:
     Parameters
     ----------
     game: ttt.models.Game
-    player_number
-    lr
+        Game that was played.
+    player_number: int
+        Player to be rewarded.
+    lr: float
+        Learning rate.
 
     Returns
     -------
     cpu_agent: ttt.models.CPUAgent
+        Agent with its weights updated with games' results.
     """
 
     assert player_number in {1, 2}

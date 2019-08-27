@@ -164,13 +164,16 @@
 <span class="kn">from</span> <span class="nn">ttt.play</span> <span class="k">import</span> <span class="n">play_game_player_vs_comp</span>
 
 
-<div class="viewcode-block" id="play_human_vs_cpu"><a class="viewcode-back" href="../../../modules/ttt.cli.html#ttt.cli.human_vs_cpu.play_human_vs_cpu">[docs]</a><span class="k">def</span> <span class="nf">play_human_vs_cpu</span><span class="p">(</span><span class="n">cpu_weights_path</span><span class="p">,</span> <span class="n">cpu_mode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="play_human_vs_cpu"><a class="viewcode-back" href="../../../modules/ttt.cli.html#ttt.cli.human_vs_cpu.play_human_vs_cpu">[docs]</a><span class="k">def</span> <span class="nf">play_human_vs_cpu</span><span class="p">(</span><span class="n">cpu_weights_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cpu_mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plays a game between a human player and a CPU agent.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    cpu_weights_path</span>
-<span class="sd">    cpu_mode</span>
+<span class="sd">    cpu_weights_path: str</span>
+<span class="sd">        Path to the JSON file with the first player&#39;s weights</span>
+<span class="sd">    cpu_mode: str</span>
+<span class="sd">        Player 1 policy. Whether best or random.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">assert</span> <span class="n">cpu_mode</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;random&quot;</span><span class="p">,</span> <span class="s2">&quot;best&quot;</span><span class="p">}</span>

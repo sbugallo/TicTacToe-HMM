@@ -157,33 +157,41 @@
            <div itemprop="articleBody">
             
   <h1>Source code for ttt.play</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">loguru</span> <span class="k">import</span> <span class="n">logger</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Callable</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Game</span><span class="p">,</span> <span class="n">HumanAgent</span>
+<span class="kn">from</span> <span class="nn">loguru</span> <span class="k">import</span> <span class="n">logger</span>
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Game</span><span class="p">,</span> <span class="n">HumanAgent</span><span class="p">,</span> <span class="n">CPUAgent</span>
 <span class="kn">from</span> <span class="nn">.rewarding</span> <span class="k">import</span> <span class="n">rewarding</span>
 
 
-<div class="viewcode-block" id="play_game_cpu_vs_cpu"><a class="viewcode-back" href="../../modules/ttt.html#ttt.play.play_game_cpu_vs_cpu">[docs]</a><span class="k">def</span> <span class="nf">play_game_cpu_vs_cpu</span><span class="p">(</span><span class="n">player_1</span><span class="p">,</span> <span class="n">player_2</span><span class="p">,</span> <span class="n">player_1_mode</span><span class="p">,</span> <span class="n">player_2_mode</span><span class="p">,</span> <span class="n">num_rounds</span><span class="p">,</span> <span class="n">display_board</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                         <span class="n">display_text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Game</span><span class="p">:</span>
+<div class="viewcode-block" id="play_game_cpu_vs_cpu"><a class="viewcode-back" href="../../modules/ttt.html#ttt.play.play_game_cpu_vs_cpu">[docs]</a><span class="k">def</span> <span class="nf">play_game_cpu_vs_cpu</span><span class="p">(</span><span class="n">player_1</span><span class="p">:</span> <span class="n">CPUAgent</span><span class="p">,</span> <span class="n">player_2</span><span class="p">:</span> <span class="n">CPUAgent</span><span class="p">,</span> <span class="n">player_1_mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">player_2_mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                         <span class="n">num_rounds</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">display_board</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">display_text</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Game</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plays a game between two cpu players.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    player_1</span>
-<span class="sd">    player_2</span>
-<span class="sd">    player_1_mode</span>
-<span class="sd">    player_2_mode</span>
-<span class="sd">    num_rounds</span>
-<span class="sd">    display_board</span>
-<span class="sd">    display_text</span>
+<span class="sd">    player_1: ttt.models.CPUAgent</span>
+<span class="sd">    player_2: ttt.models.CPUAgent</span>
+<span class="sd">    player_1_mode: str</span>
+<span class="sd">        Whether best or random.</span>
+<span class="sd">    player_2_mode: str</span>
+<span class="sd">        Whether best or random.</span>
+<span class="sd">    num_rounds: int</span>
+<span class="sd">        Number or rounds to be played.</span>
+<span class="sd">    display_board: bool</span>
+<span class="sd">        Whether to display the board after each move.</span>
+<span class="sd">    display_text: bool</span>
+<span class="sd">        Whether to display game information</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
+<span class="sd">    played_game: ttt.models.Game</span>
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
-<span class="sd">    AssertionError:</span>
-
+<span class="sd">    AssertionError: if `num_rounds` &lt; 1</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">assert</span> <span class="n">num_rounds</span> <span class="o">&gt;</span> <span class="mi">0</span>
@@ -202,7 +210,7 @@
 
         <span class="k">if</span> <span class="n">game</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">player_1_victories</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">game</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">player_2_victories</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="k">if</span> <span class="n">display_text</span><span class="p">:</span>
@@ -217,17 +225,19 @@
     <span class="k">return</span> <span class="n">game</span></div>
 
 
-<div class="viewcode-block" id="play_game_player_vs_comp"><a class="viewcode-back" href="../../modules/ttt.html#ttt.play.play_game_player_vs_comp">[docs]</a><span class="k">def</span> <span class="nf">play_game_player_vs_comp</span><span class="p">(</span><span class="n">cpu_player</span><span class="p">,</span> <span class="n">cpu_player_mode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Game</span><span class="p">:</span>
+<div class="viewcode-block" id="play_game_player_vs_comp"><a class="viewcode-back" href="../../modules/ttt.html#ttt.play.play_game_player_vs_comp">[docs]</a><span class="k">def</span> <span class="nf">play_game_player_vs_comp</span><span class="p">(</span><span class="n">cpu_player</span><span class="p">:</span> <span class="n">CPUAgent</span><span class="p">,</span> <span class="n">cpu_player_mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Game</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plays a game between a human player and a CPU agent.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    cpu_player</span>
-<span class="sd">    cpu_player_mode</span>
+<span class="sd">    cpu_player: ttt.models.CPUAgent</span>
+<span class="sd">    cpu_player_mode: str</span>
+<span class="sd">        Whether best or random.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-
+<span class="sd">    played_game: ttt.models.Game</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">human_player</span> <span class="o">=</span> <span class="n">HumanAgent</span><span class="p">()</span>
@@ -244,7 +254,7 @@
 
         <span class="k">if</span> <span class="n">game</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">human_player_victories</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">game</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">cpu_player_victories</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="k">if</span> <span class="n">game</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -270,8 +280,7 @@
 
 
 <div class="viewcode-block" id="play_game_player_vs_player"><a class="viewcode-back" href="../../modules/ttt.html#ttt.play.play_game_player_vs_player">[docs]</a><span class="k">def</span> <span class="nf">play_game_player_vs_player</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Plays a game between 2 human players&quot;&quot;&quot;</span>
 
     <span class="n">player_1</span> <span class="o">=</span> <span class="n">HumanAgent</span><span class="p">()</span>
     <span class="n">player_2</span> <span class="o">=</span> <span class="n">HumanAgent</span><span class="p">()</span>
@@ -287,7 +296,7 @@
 
         <span class="k">if</span> <span class="n">game</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">player_1_victories</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">game</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">player_2_victories</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="k">if</span> <span class="n">game</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -309,20 +318,27 @@
     <span class="k">return</span></div>
 
 
-<div class="viewcode-block" id="play_game"><a class="viewcode-back" href="../../modules/ttt.html#ttt.play.play_game">[docs]</a><span class="k">def</span> <span class="nf">play_game</span><span class="p">(</span><span class="n">game</span><span class="p">,</span> <span class="n">player_1_move</span><span class="p">,</span> <span class="n">player_2_move</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">display_board</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Game</span><span class="p">:</span>
+<div class="viewcode-block" id="play_game"><a class="viewcode-back" href="../../modules/ttt.html#ttt.play.play_game">[docs]</a><span class="k">def</span> <span class="nf">play_game</span><span class="p">(</span><span class="n">game</span><span class="p">:</span> <span class="n">Game</span><span class="p">,</span> <span class="n">player_1_move</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">player_2_move</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+              <span class="n">display_board</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Game</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Runs 1 round of a game.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    game</span>
-<span class="sd">    player_1_move</span>
-<span class="sd">    player_2_move</span>
-<span class="sd">    start</span>
-<span class="sd">    display_board</span>
+<span class="sd">    game: ttt.models.Game</span>
+<span class="sd">        Game to be played.</span>
+<span class="sd">    player_1_move: method</span>
+<span class="sd">        Player&#39;s method that computes the next move.</span>
+<span class="sd">    player_2_move: method</span>
+<span class="sd">        Player&#39;s method that computes the next move.</span>
+<span class="sd">    start: int</span>
+<span class="sd">        Which player will start.</span>
+<span class="sd">    display_board: bool</span>
+<span class="sd">        Whether to display the board after each move or not.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-
+<span class="sd">    played_game: ttt.models.Game</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>

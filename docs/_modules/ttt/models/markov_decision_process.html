@@ -166,11 +166,30 @@
 
 
 <div class="viewcode-block" id="TicTacToeMDP"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.markov_decision_process.TicTacToeMDP">[docs]</a><span class="k">class</span> <span class="nc">TicTacToeMDP</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class modeling a Markov Decision Process</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    states: dict</span>
+<span class="sd">        Dict of states</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">State</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
 <div class="viewcode-block" id="TicTacToeMDP.has_state"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.markov_decision_process.TicTacToeMDP.has_state">[docs]</a>    <span class="k">def</span> <span class="nf">has_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks if MDP has registered the given state</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        state: ttt.models.State</span>
+<span class="sd">            State to be checked</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        is_registered: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">grid</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">grid</span><span class="p">):</span>
@@ -179,16 +198,46 @@
         <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="TicTacToeMDP.add_state"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.markov_decision_process.TicTacToeMDP.add_state">[docs]</a>    <span class="k">def</span> <span class="nf">add_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds the given state to the MDP.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        state: ttt.models.State</span>
+<span class="sd">            State to be added.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">)]</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">grid</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TicTacToeMDP.get_state"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.markov_decision_process.TicTacToeMDP.get_state">[docs]</a>    <span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">State</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the state with the given grid.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        grid: numpy.ndarray</span>
+<span class="sd">            Representation of the board.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        state: ttt.models.State</span>
+<span class="sd">            State containing the given grid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">state</span><span class="o">.</span><span class="n">grid</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">state</span>
 
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Grid </span><span class="si">{grid}</span><span class="s2"> could not be found in saved states </span><span class="si">{self.states}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Grid </span><span class="si">{grid}</span><span class="s2"> could not be found in saved states &quot;</span>
+                         <span class="n">f</span><span class="s2">&quot;{[state.grid for state in self.states.values()]}&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TicTacToeMDP.update_state"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.markov_decision_process.TicTacToeMDP.update_state">[docs]</a>    <span class="k">def</span> <span class="nf">update_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the MDPs state with the given one.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        state: ttt.models.State</span>
+<span class="sd">            State to update MDPs with.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">grid</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">grid</span><span class="p">):</span>

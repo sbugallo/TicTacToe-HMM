@@ -7,11 +7,30 @@ from .state import State
 
 
 class TicTacToeMDP:
+    """
+    Class modeling a Markov Decision Process
+
+    Attributes
+    ----------
+    states: dict
+        Dict of states
+    """
 
     def __init__(self):
         self.states: Dict[int, State] = {}
 
     def has_state(self, state: State) -> bool:
+        """
+        Checks if MDP has registered the given state
+        Parameters
+        ----------
+        state: ttt.models.State
+            State to be checked
+
+        Returns
+        -------
+        is_registered: bool
+        """
 
         for entry in self.states.values():
             if np.array_equal(state.grid, entry.grid):
@@ -20,16 +39,46 @@ class TicTacToeMDP:
         return False
 
     def add_state(self, state: State) -> None:
+        """
+        Adds the given state to the MDP.
+
+        Parameters
+        ----------
+        state: ttt.models.State
+            State to be added.
+        """
         self.states[len(self.states)] = State(state.grid)
 
     def get_state(self, grid: np.ndarray) -> State:
+        """
+        Gets the state with the given grid.
+
+        Parameters
+        ----------
+        grid: numpy.ndarray
+            Representation of the board.
+
+        Returns
+        -------
+        state: ttt.models.State
+            State containing the given grid.
+        """
         for state in self.states.values():
             if np.array_equal(grid, state.grid):
                 return state
 
-        raise ValueError(f"Grid {grid} could not be found in saved states {self.states}")
+        raise ValueError(f"Grid {grid} could not be found in saved states "
+                         f"{[state.grid for state in self.states.values()]}")
 
     def update_state(self, state: State) -> None:
+        """
+        Updates the MDPs state with the given one.
+
+        Parameters
+        ----------
+        state: ttt.models.State
+            State to update MDPs with.
+        """
 
         for key, entry in self.states.items():
             if np.array_equal(state.grid, entry.grid):
