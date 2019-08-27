@@ -1,5 +1,3 @@
-from os import system, name
-
 import numpy as np
 from loguru import logger
 
@@ -106,7 +104,7 @@ class Game:
         self.check_vertical_win()
         self.check_diagonal_win()
 
-    def print_board(self) -> None:
+    def print_board(self) -> dict:
         """Displays the current grid."""
 
         positions = {}
@@ -120,9 +118,6 @@ class Game:
 
             positions[f"p{index}"] = mark
 
-        command = 'cls' if name == 'nt' else 'clear'
-        system(command)
-
         logger.info("""
                       {p0} | {p1} | {p2}
                      -----------
@@ -130,3 +125,5 @@ class Game:
                      -----------
                       {p6} | {p7} | {p8}
                     """.format(**positions))
+
+        return positions

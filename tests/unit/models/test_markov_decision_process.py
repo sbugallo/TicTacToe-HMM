@@ -1,7 +1,8 @@
-from ttt.models import TicTacToeMDP, State
-import pytest
 import numpy as np
+import pytest
 from numpy.testing import assert_array_equal
+
+from ttt.models import TicTacToeMDP, State
 
 
 def test_mdp_initializes_correctly():

@@ -1,11 +1,10 @@
-
-from ttt.rewarding import rewarding, get_move
-from ttt.play import play_game_cpu_vs_cpu
-from ttt.models import CPUAgent, State
-
-import pytest
 import numpy as np
+import pytest
 from numpy.testing import assert_array_equal
+
+from ttt.models import CPUAgent, State
+from ttt.play import play_game_cpu_vs_cpu
+from ttt.rewarding import rewarding, get_move
 
 
 @pytest.fixture

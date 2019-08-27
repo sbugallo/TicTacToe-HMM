@@ -1,5 +1,6 @@
-import random
+import builtins
 import json
+import random
 from pathlib import Path
 
 import numpy as np
@@ -176,3 +177,13 @@ def test_humanagent_generates_move_correctly(mocker):
         new_grid = np.array([1, 2, 1, 2, 1, 2, 1, 0, 0])
         agent.update_grid(new_grid)
         assert agent.get_next_move() == 7
+
+
+def test_humanagent_loops_till_correct_move_correctly(mocker):
+    agent = HumanAgent()
+
+    with mocker.patch('builtins.input', side_effect=[0, 1, 2, 3, 4, 5, 6, 7, 8]):
+        new_grid = np.array([1, 2, 1, 2, 1, 2, 1, 0, 0])
+        agent.update_grid(new_grid)
+        assert agent.get_next_move() == 7
+        assert builtins.input.call_count == 9

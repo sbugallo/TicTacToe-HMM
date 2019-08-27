@@ -1,7 +1,8 @@
-from ttt.models import Game, CPUAgent, HumanAgent
-from numpy.testing import assert_array_equal
 import numpy as np
 import pytest
+from numpy.testing import assert_array_equal
+
+from ttt.models import Game, CPUAgent, HumanAgent
 
 
 def test_game_initializes_correctly():
@@ -139,3 +140,21 @@ def test_game_checks_diagonal_win_correctly(grid, expected_result):
     game.check_diagonal_win()
 
     assert game.result == expected_result
+
+
+@pytest.mark.parametrize("grid, expected_result", [
+    (np.array([1, 0, 0, 0, 1, 0, 0, 0, 1]),
+     {"p0": "X", "p1": "2", "p2": "3", "p3": "4", "p4": "X", "p5": "6", "p6": "7", "p7": "8", "p8": "X"}),
+    (np.array([2, 0, 0, 0, 2, 0, 0, 0, 2]),
+     {"p0": "O", "p1": "2", "p2": "3", "p3": "4", "p4": "O", "p5": "6", "p6": "7", "p7": "8", "p8": "O"}),
+    (np.array([1, 2, 1, 2, 1, 2, 1, 2, 1]),
+     {"p0": "X", "p1": "O", "p2": "X", "p3": "O", "p4": "X", "p5": "O", "p6": "X", "p7": "O", "p8": "X"})
+])
+def test_game_prints_correct_board(grid, expected_result):
+    game = Game(CPUAgent(), CPUAgent())
+    game.grid = grid
+
+    printed_board = game.print_board()
+
+    for pos in printed_board.keys():
+        assert printed_board[pos] == expected_result[pos]

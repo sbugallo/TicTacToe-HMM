@@ -1,5 +1,7 @@
-from loguru import logger
 from typing import Callable
+
+from loguru import logger
+
 from .models import Game, HumanAgent, CPUAgent
 from .rewarding import rewarding
 
