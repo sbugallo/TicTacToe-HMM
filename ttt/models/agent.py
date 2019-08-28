@@ -1,7 +1,7 @@
 import json
 import random
 from pathlib import Path
-from typing import Dict
+from typing import List
 
 import numpy as np
 from loguru import logger
@@ -50,7 +50,7 @@ class CPUAgent(Agent):
 
     def __init__(self):
         super().__init__()
-        self.states: Dict[int, State] = {}
+        self.states: List[State] = []
 
     def update_grid(self, grid: np.ndarray) -> None:
         """
@@ -103,7 +103,7 @@ class CPUAgent(Agent):
         is_registered: bool
         """
 
-        for entry in self.states.values():
+        for entry in self.states:
             if np.array_equal(state.grid, entry.grid):
                 return True
 
@@ -118,7 +118,7 @@ class CPUAgent(Agent):
         state: ttt.models.State
             State to be added.
         """
-        self.states[len(self.states)] = State(state.grid)
+        self.states.append(State(state.grid))
 
     def get_state(self, grid: np.ndarray) -> State:
         """
@@ -134,12 +134,12 @@ class CPUAgent(Agent):
         state: ttt.models.State
             State containing the given grid.
         """
-        for state in self.states.values():
+        for state in self.states:
             if np.array_equal(grid, state.grid):
                 return state
 
         raise ValueError(f"Grid {grid} could not be found in saved states "
-                         f"{[state.grid for state in self.states.values()]}")
+                         f"{[state.grid for state in self.states]}")
 
     def update_state(self, state: State) -> None:
         """
@@ -151,10 +151,10 @@ class CPUAgent(Agent):
             State to update MDPs with.
         """
 
-        for key, entry in self.states.items():
+        for index, entry in enumerate(self.states):
             if np.array_equal(state.grid, entry.grid):
                 entry.next_states_values = state.next_states_values.copy()
-                self.states[key] = entry
+                self.states[index] = entry
 
     def serialize(self) -> dict:
         """
@@ -166,7 +166,7 @@ class CPUAgent(Agent):
         """
 
         return {
-            "states": {str(key): state.serialize() for key, state in self.states.items()}
+            "states": [state.serialize() for state in self.states]
         }
 
     def deserialize(self, json_data: dict) -> None:
@@ -179,12 +179,10 @@ class CPUAgent(Agent):
             Dictionary with the following format: {mdp: dict}
         """
 
-        for key, serialized_state in json_data["states"].items():
+        for serialized_state in json_data["states"]:
             state = State()
             state.deserialize(serialized_state)
-            self.states[int(key)] = state
-
-        logger.debug(f"Loaded MDP: \n\tstates: {self.states}")
+            self.states.append(state)
 
         logger.debug(f"Loaded agent")
 

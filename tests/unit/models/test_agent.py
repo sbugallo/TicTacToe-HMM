@@ -4,8 +4,8 @@ import random
 from pathlib import Path
 
 import numpy as np
-from numpy.testing import assert_array_equal
 import pytest
+from numpy.testing import assert_array_equal
 
 from ttt.models.agent import Agent, CPUAgent, HumanAgent, State
 
@@ -34,6 +34,7 @@ def deterministic_test(seed):
     return decorator
 
 
+@pytest.mark.unit
 def test_agent_correct_initialization():
     agent = Agent()
 
@@ -41,6 +42,7 @@ def test_agent_correct_initialization():
     assert agent.grid is None
 
 
+@pytest.mark.unit
 def test_agent_updates_grid_correctly():
     agent = Agent()
     new_grid = np.array([1, 2, 1, 2, 1, 2, 1, 0, 0])
@@ -53,6 +55,7 @@ def test_agent_updates_grid_correctly():
     assert_array_equal(agent.current_state.next_states_transitions, np.array([7, 8]))
 
 
+@pytest.mark.unit
 def test_cpuagent_correct_initialization():
     agent = CPUAgent()
 
@@ -61,6 +64,7 @@ def test_cpuagent_correct_initialization():
     assert not agent.states
 
 
+@pytest.mark.unit
 def test_cpuagent_updates_grid_correctly():
     agent = CPUAgent()
     new_grid = np.array([1, 2, 1, 2, 1, 2, 1, 0, 0])
@@ -80,6 +84,7 @@ def test_cpuagent_updates_grid_correctly():
     assert_array_equal(new_state.next_states_transitions, np.array([7, 8]))
 
 
+@pytest.mark.unit
 @deterministic_test(500)
 def test_cpuagent_generates_random_moves():
     agent = CPUAgent()
@@ -95,6 +100,7 @@ def test_cpuagent_generates_random_moves():
     assert 8 in generated_moves
 
 
+@pytest.mark.unit
 def test_cpuagent_generates_best_move_correctly():
     agent = CPUAgent()
     new_grid = np.array([1, 2, 1, 2, 1, 2, 1, 0, 0])
@@ -111,43 +117,45 @@ def test_cpuagent_generates_best_move_correctly():
     assert 8 in generated_moves
 
 
+@pytest.mark.unit
 def test_cpuagent_serializes_correctly():
     agent = CPUAgent()
-    agent.states = {
-        0: State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])),
-        1: State(np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 0])),
-    }
+    agent.states = [
+        State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])),
+        State(np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 0]))
+    ]
 
     serialized_agent = agent.serialize()
 
     assert 'states' in serialized_agent
     assert len(serialized_agent["states"]) == 2
 
-    assert_array_equal(serialized_agent["states"]["0"]["grid"], np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
-    assert_array_equal(serialized_agent["states"]["1"]["grid"], np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 0]))
+    assert_array_equal(serialized_agent["states"][0]["grid"], np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
+    assert_array_equal(serialized_agent["states"][1]["grid"], np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 0]))
 
-    assert_array_equal(serialized_agent["states"]["0"]["next_states_values"], np.array([0, 0, 0, 0, 0, 0.0, 0, 0, 0, 0]))
-    assert_array_equal(serialized_agent["states"]["1"]["next_states_values"], np.array([0]))
+    assert_array_equal(serialized_agent["states"][0]["next_states_values"], np.array([0, 0, 0, 0, 0, 0.0, 0, 0, 0, 0]))
+    assert_array_equal(serialized_agent["states"][1]["next_states_values"], np.array([0]))
 
-    assert_array_equal(serialized_agent["states"]["0"]["next_states_transitions"],
+    assert_array_equal(serialized_agent["states"][0]["next_states_transitions"],
                        np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))
-    assert_array_equal(serialized_agent["states"]["1"]["next_states_transitions"], np.array([9]))
+    assert_array_equal(serialized_agent["states"][1]["next_states_transitions"], np.array([9]))
 
 
+@pytest.mark.unit
 def test_cpuagent_deserializes_correctly():
     serialized_agent = {
-        'states': {
-            '0': {
+        'states': [
+            {
                 'grid': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 'next_states_values': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
                 'next_states_transitions': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
             },
-            '1': {
+            {
                 'grid': [1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
                 'next_states_values': [0.0],
                 'next_states_transitions': [9]
             }
-        }
+        ]
     }
 
     agent = CPUAgent()
@@ -163,6 +171,7 @@ def test_cpuagent_deserializes_correctly():
     assert_array_equal(agent.states[1].next_states_transitions, np.array([9]))
 
 
+@pytest.mark.unit
 def test_cpuagent_saves_correctly(tmpdir):
     root = Path(tmpdir)
     weights_path = root / "agent.json"
@@ -176,6 +185,7 @@ def test_cpuagent_saves_correctly(tmpdir):
     assert not serialized_agent["states"]
 
 
+@pytest.mark.unit
 def test_cpuagent_loads_correctly(tmpdir):
     root = Path(tmpdir)
     weights_path = root / "agent.json"
@@ -187,10 +197,11 @@ def test_cpuagent_loads_correctly(tmpdir):
     assert not agent.states
 
 
+@pytest.mark.unit
 @pytest.mark.parametrize("states, grid, expected_results", [
-    ({}, np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), False),
-    ({0: State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))}, np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), True),
-    ({0: State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))}, np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1]), False),
+    ([], np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), False),
+    ([State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))], np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), True),
+    ([State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))], np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1]), False),
 ])
 def test_cpuagent_has_state_correctness(states, grid, expected_results):
     agent = CPUAgent()
@@ -199,9 +210,10 @@ def test_cpuagent_has_state_correctness(states, grid, expected_results):
     assert agent.has_state(State(grid)) == expected_results
 
 
+@pytest.mark.unit
 @pytest.mark.parametrize("states, grid, expected_results", [
-    ({}, np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), 1),
-    ({0: State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))}, np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1]), 2)
+    ([], np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), 1),
+    ([State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))], np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1]), 2)
 ])
 def test_cpuagent_add_state_correctness(states, grid, expected_results):
     agent = CPUAgent()
@@ -212,17 +224,19 @@ def test_cpuagent_add_state_correctness(states, grid, expected_results):
     assert_array_equal(agent.states[len(agent.states) - 1].grid, grid)
 
 
+@pytest.mark.unit
 def test_cpuagent_get_state_correctness():
-    agent =CPUAgent()
-    agent.states = {
-        0: State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])),
-        1: State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1])),
-    }
+    agent = CPUAgent()
+    agent.states = [
+        State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])),
+        State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1])),
+    ]
 
     result = agent.get_state(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])).grid
     assert_array_equal(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), result)
 
 
+@pytest.mark.unit
 def test_cpuagent_get_state_raises_value_error_if_state_not_found():
     agent = CPUAgent()
 
@@ -230,12 +244,13 @@ def test_cpuagent_get_state_raises_value_error_if_state_not_found():
         agent.get_state(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
 
 
+@pytest.mark.unit
 def test_cpuagent_update_state_correctness():
     agent = CPUAgent()
-    agent.states = {
-        0: State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])),
-        1: State(np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 0])),
-    }
+    agent.states = [
+        State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])),
+        State(np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 0])),
+    ]
 
     new_state = State(np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 0]))
     new_state.next_states_values *= 2
@@ -245,6 +260,7 @@ def test_cpuagent_update_state_correctness():
     assert_array_equal(agent.states[1].next_states_values, new_state.next_states_values)
 
 
+@pytest.mark.unit
 def test_humanagent_correct_initialization():
     agent = HumanAgent()
 
@@ -252,6 +268,7 @@ def test_humanagent_correct_initialization():
     assert agent.grid is None
 
 
+@pytest.mark.unit
 def test_humanagent_updates_grid_correctly():
     agent = HumanAgent()
     new_grid = np.array([1, 2, 1, 2, 1, 2, 1, 0, 0])
@@ -264,6 +281,7 @@ def test_humanagent_updates_grid_correctly():
     assert_array_equal(agent.current_state.next_states_transitions, np.array([7, 8]))
 
 
+@pytest.mark.unit
 def test_humanagent_generates_move_correctly(mocker):
     agent = HumanAgent()
 
@@ -273,6 +291,7 @@ def test_humanagent_generates_move_correctly(mocker):
         assert agent.get_next_move() == 7
 
 
+@pytest.mark.unit
 def test_humanagent_loops_till_correct_move_correctly(mocker):
     agent = HumanAgent()
 
