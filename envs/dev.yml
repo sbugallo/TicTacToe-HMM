@@ -5,6 +5,7 @@ dependencies:
   - python=3.7
   - numpy
   - coverage
+  - colorama
   - pytest
   - pytest-cov
   - pylint
