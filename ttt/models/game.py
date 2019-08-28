@@ -1,5 +1,6 @@
 import numpy as np
 from loguru import logger
+from colorama import init, Fore
 
 from .agent import Agent
 
@@ -107,23 +108,27 @@ class Game:
     def print_board(self) -> dict:
         """Displays the current grid."""
 
+        init(autoreset=True)
+
         positions = {}
         for index, value in enumerate(self.grid):
             if value == 1:
-                mark = "X"
+                mark = f"{Fore.RED}X{Fore.RESET}"
             elif value == 2:
-                mark = "O"
+                mark = f"{Fore.CYAN}O{Fore.RESET}"
             else:
-                mark = f"{index + 1}"
+                mark = f"{Fore.GREEN}{index + 1}{Fore.RESET}"
 
             positions[f"p{index}"] = mark
 
         logger.info("""
-                      {p0} | {p1} | {p2}
-                     -----------
-                      {p3} | {p4} | {p5}
-                     -----------
-                      {p6} | {p7} | {p8}
+
+  {p0} | {p1} | {p2}
+ -----------
+  {p3} | {p4} | {p5}
+ -----------
+  {p6} | {p7} | {p8}
+
                     """.format(**positions))
 
         return positions

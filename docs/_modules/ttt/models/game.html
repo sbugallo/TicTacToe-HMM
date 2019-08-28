@@ -159,6 +159,7 @@
   <h1>Source code for ttt.models.game</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">loguru</span> <span class="k">import</span> <span class="n">logger</span>
+<span class="kn">from</span> <span class="nn">colorama</span> <span class="k">import</span> <span class="n">init</span><span class="p">,</span> <span class="n">Fore</span>
 
 <span class="kn">from</span> <span class="nn">.agent</span> <span class="k">import</span> <span class="n">Agent</span>
 
@@ -266,23 +267,27 @@
 <div class="viewcode-block" id="Game.print_board"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.game.Game.print_board">[docs]</a>    <span class="k">def</span> <span class="nf">print_board</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Displays the current grid.&quot;&quot;&quot;</span>
 
+        <span class="n">init</span><span class="p">(</span><span class="n">autoreset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
         <span class="n">positions</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">mark</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
+                <span class="n">mark</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{Fore.RED}</span><span class="s2">X</span><span class="si">{Fore.RESET}</span><span class="s2">&quot;</span>
             <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="n">mark</span> <span class="o">=</span> <span class="s2">&quot;O&quot;</span>
+                <span class="n">mark</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{Fore.CYAN}</span><span class="s2">O</span><span class="si">{Fore.RESET}</span><span class="s2">&quot;</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">mark</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;{index + 1}&quot;</span>
+                <span class="n">mark</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{Fore.GREEN}</span><span class="s2">{index + 1}</span><span class="si">{Fore.RESET}</span><span class="s2">&quot;</span>
 
             <span class="n">positions</span><span class="p">[</span><span class="n">f</span><span class="s2">&quot;p</span><span class="si">{index}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mark</span>
 
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">                      </span><span class="si">{p0}</span><span class="s2"> | </span><span class="si">{p1}</span><span class="s2"> | </span><span class="si">{p2}</span><span class="s2"></span>
-<span class="s2">                     -----------</span>
-<span class="s2">                      </span><span class="si">{p3}</span><span class="s2"> | </span><span class="si">{p4}</span><span class="s2"> | </span><span class="si">{p5}</span><span class="s2"></span>
-<span class="s2">                     -----------</span>
-<span class="s2">                      </span><span class="si">{p6}</span><span class="s2"> | </span><span class="si">{p7}</span><span class="s2"> | </span><span class="si">{p8}</span><span class="s2"></span>
+
+<span class="s2">  </span><span class="si">{p0}</span><span class="s2"> | </span><span class="si">{p1}</span><span class="s2"> | </span><span class="si">{p2}</span><span class="s2"></span>
+<span class="s2"> -----------</span>
+<span class="s2">  </span><span class="si">{p3}</span><span class="s2"> | </span><span class="si">{p4}</span><span class="s2"> | </span><span class="si">{p5}</span><span class="s2"></span>
+<span class="s2"> -----------</span>
+<span class="s2">  </span><span class="si">{p6}</span><span class="s2"> | </span><span class="si">{p7}</span><span class="s2"> | </span><span class="si">{p8}</span><span class="s2"></span>
+
 <span class="s2">                    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">positions</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">positions</span></div></div>
