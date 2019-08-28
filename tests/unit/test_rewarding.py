@@ -29,7 +29,7 @@ def test_rewarding_raises_assertion_error_if_player_number_is_not_valid():
 
 def test_rewarding_do_not_update_values_if_lr_is_0(sample_game):
     cpu_agent = rewarding(sample_game, 1, 0)
-    for state in cpu_agent.mdp.states.values():
+    for state in cpu_agent.states.values():
         values = state.next_states_values
         assert_array_equal(np.zeros(len(values)), values)
 
@@ -42,12 +42,12 @@ def test_rewarding_only_computes_player_moves(sample_game):
     sample_game.result = winner
 
     cpu_agent = rewarding(sample_game, loser, 0.1)
-    for state in cpu_agent.mdp.states.values():
+    for state in cpu_agent.states.values():
         values = state.next_states_values
         assert_array_equal(np.zeros(len(values)), values)
 
     cpu_agent = rewarding(sample_game, winner, 0.1)
     with pytest.raises(AssertionError):
-        for state in cpu_agent.mdp.states.values():
+        for state in cpu_agent.states.values():
             values = state.next_states_values
             assert_array_equal(np.zeros(len(values)), values)
