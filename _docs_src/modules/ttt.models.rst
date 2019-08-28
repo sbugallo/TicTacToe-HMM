@@ -25,14 +25,6 @@ ttt.models.game module
    :undoc-members:
    :show-inheritance:
 
-ttt.models.markov\_decision\_process module
--------------------------------------------
-
-.. automodule:: ttt.models.markov_decision_process
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 ttt.models.state module
 -----------------------
 

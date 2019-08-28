@@ -196,8 +196,8 @@
 
     <span class="k">assert</span> <span class="n">num_rounds</span> <span class="o">&gt;</span> <span class="mi">0</span>
 
-    <span class="n">player_1_move</span> <span class="o">=</span> <span class="n">player_1</span><span class="o">.</span><span class="n">get_random_move</span> <span class="k">if</span> <span class="n">player_1_mode</span> <span class="o">==</span> <span class="s1">&#39;random&#39;</span> <span class="k">else</span> <span class="n">player_1</span><span class="o">.</span><span class="n">get_next_best_move</span>
-    <span class="n">player_2_move</span> <span class="o">=</span> <span class="n">player_2</span><span class="o">.</span><span class="n">get_random_move</span> <span class="k">if</span> <span class="n">player_2_mode</span> <span class="o">==</span> <span class="s1">&#39;random&#39;</span> <span class="k">else</span> <span class="n">player_2</span><span class="o">.</span><span class="n">get_next_best_move</span>
+    <span class="n">player_1_move</span> <span class="o">=</span> <span class="n">player_1</span><span class="o">.</span><span class="n">get_random_move</span> <span class="k">if</span> <span class="n">player_1_mode</span> <span class="o">==</span> <span class="s1">&#39;random&#39;</span> <span class="k">else</span> <span class="n">player_1</span><span class="o">.</span><span class="n">get_best_move</span>
+    <span class="n">player_2_move</span> <span class="o">=</span> <span class="n">player_2</span><span class="o">.</span><span class="n">get_random_move</span> <span class="k">if</span> <span class="n">player_2_mode</span> <span class="o">==</span> <span class="s1">&#39;random&#39;</span> <span class="k">else</span> <span class="n">player_2</span><span class="o">.</span><span class="n">get_best_move</span>
 
     <span class="n">player_1_victories</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">player_2_victories</span> <span class="o">=</span> <span class="mi">0</span>
@@ -241,7 +241,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">human_player</span> <span class="o">=</span> <span class="n">HumanAgent</span><span class="p">()</span>
-    <span class="n">cpu_player_move</span> <span class="o">=</span> <span class="n">cpu_player</span><span class="o">.</span><span class="n">get_random_move</span> <span class="k">if</span> <span class="n">cpu_player_mode</span> <span class="o">==</span> <span class="s1">&#39;random&#39;</span> <span class="k">else</span> <span class="n">cpu_player</span><span class="o">.</span><span class="n">get_next_best_move</span>
+    <span class="n">cpu_player_move</span> <span class="o">=</span> <span class="n">cpu_player</span><span class="o">.</span><span class="n">get_random_move</span> <span class="k">if</span> <span class="n">cpu_player_mode</span> <span class="o">==</span> <span class="s1">&#39;random&#39;</span> <span class="k">else</span> <span class="n">cpu_player</span><span class="o">.</span><span class="n">get_best_move</span>
 
     <span class="n">human_player_victories</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">cpu_player_victories</span> <span class="o">=</span> <span class="mi">0</span>
@@ -292,7 +292,7 @@
 
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">start</span> <span class="o">=</span> <span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span>
-        <span class="n">game</span> <span class="o">=</span> <span class="n">play_game</span><span class="p">(</span><span class="n">Game</span><span class="p">(</span><span class="n">player_1</span><span class="p">,</span> <span class="n">player_2</span><span class="p">),</span> <span class="n">player_1</span><span class="o">.</span><span class="n">get_next_move</span><span class="p">,</span> <span class="n">player_2</span><span class="o">.</span><span class="n">get_next_move</span><span class="p">(),</span> <span class="n">start</span><span class="p">)</span>
+        <span class="n">game</span> <span class="o">=</span> <span class="n">play_game</span><span class="p">(</span><span class="n">Game</span><span class="p">(</span><span class="n">player_1</span><span class="p">,</span> <span class="n">player_2</span><span class="p">),</span> <span class="n">player_1</span><span class="o">.</span><span class="n">get_next_move</span><span class="p">,</span> <span class="n">player_2</span><span class="o">.</span><span class="n">get_next_move</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">game</span><span class="o">.</span><span class="n">result</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">player_1_victories</span> <span class="o">+=</span> <span class="mi">1</span>

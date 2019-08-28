@@ -164,6 +164,8 @@ def test_game_prints_correct_board(grid, expected_result):
     game.grid = grid
 
     printed_board = game.print_board()
+    wrappers = {"X": "\x1b[31m", "O": "\x1b[36m"}
 
     for pos in printed_board.keys():
-        assert printed_board[pos] == expected_result[pos]
+        wrapper_ascii = wrappers[expected_result[pos]]if expected_result[pos] in wrappers else "\x1b[32m"
+        assert printed_board[pos] == f"{wrapper_ascii}{expected_result[pos]}\x1b[39m"
