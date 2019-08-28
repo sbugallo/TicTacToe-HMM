@@ -101,7 +101,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-ttt.models.agent">ttt.models.agent module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-ttt.models.game">ttt.models.game module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-ttt.models.markov_decision_process">ttt.models.markov_decision_process module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-ttt.models.state">ttt.models.state module</a></li>
 </ul>
 </li>
@@ -236,12 +235,23 @@
 <dd><p>Bases: <a class="reference internal" href="#ttt.models.agent.Agent" title="ttt.models.agent.Agent"><code class="xref py py-class docutils literal notranslate"><span class="pre">ttt.models.agent.Agent</span></code></a></p>
 <p>Class modeling a CPU player.</p>
 <dl class="attribute">
-<dt id="ttt.models.agent.CPUAgent.mdp">
-<code class="sig-name descname">mdp</code><a class="headerlink" href="#ttt.models.agent.CPUAgent.mdp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Representation of the game as a Markov Decision Process.</p>
+<dt id="ttt.models.agent.CPUAgent.states">
+<code class="sig-name descname">states</code><a class="headerlink" href="#ttt.models.agent.CPUAgent.states" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of states. Representation of the game as a Markov Decision Process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>ttt.models.TicTacToeMDP</p>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ttt.models.agent.CPUAgent.add_state">
+<code class="sig-name descname">add_state</code><span class="sig-paren">(</span><em class="sig-param">state: ttt.models.state.State</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/models/agent.html#CPUAgent.add_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.agent.CPUAgent.add_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the given state to the MDP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>ttt.models.State</em>) – State to be added.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -258,8 +268,8 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="ttt.models.agent.CPUAgent.get_next_best_move">
-<code class="sig-name descname">get_next_best_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../_modules/ttt/models/agent.html#CPUAgent.get_next_best_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.agent.CPUAgent.get_next_best_move" title="Permalink to this definition">¶</a></dt>
+<dt id="ttt.models.agent.CPUAgent.get_best_move">
+<code class="sig-name descname">get_best_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../_modules/ttt/models/agent.html#CPUAgent.get_best_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.agent.CPUAgent.get_best_move" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a new move using the previous knowledge.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -281,6 +291,39 @@
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ttt.models.agent.CPUAgent.get_state">
+<code class="sig-name descname">get_state</code><span class="sig-paren">(</span><em class="sig-param">grid: numpy.ndarray</em><span class="sig-paren">)</span> &#x2192; ttt.models.state.State<a class="reference internal" href="../_modules/ttt/models/agent.html#CPUAgent.get_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.agent.CPUAgent.get_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the state with the given grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>grid</strong> (<em>numpy.ndarray</em>) – Representation of the board.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>state</strong> – State containing the given grid.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ttt.models.State</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ttt.models.agent.CPUAgent.has_state">
+<code class="sig-name descname">has_state</code><span class="sig-paren">(</span><em class="sig-param">state: ttt.models.state.State</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../_modules/ttt/models/agent.html#CPUAgent.has_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.agent.CPUAgent.has_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if MDP has registered the given state
+:param state: State to be checked
+:type state: ttt.models.State</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>is_registered</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -328,6 +371,17 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>grid</strong> (<em>numpy.ndarray</em>) – Representation of the board as an array of integers.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ttt.models.agent.CPUAgent.update_state">
+<code class="sig-name descname">update_state</code><span class="sig-paren">(</span><em class="sig-param">state: ttt.models.state.State</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/models/agent.html#CPUAgent.update_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.agent.CPUAgent.update_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the MDPs state with the given one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>ttt.models.State</em>) – State to update MDPs with.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -490,107 +544,6 @@
 <dt id="ttt.models.game.Game.print_board">
 <code class="sig-name descname">print_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="../_modules/ttt/models/game.html#Game.print_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.game.Game.print_board" title="Permalink to this definition">¶</a></dt>
 <dd><p>Displays the current grid.</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="module-ttt.models.markov_decision_process">
-<span id="ttt-models-markov-decision-process-module"></span><h2>ttt.models.markov_decision_process module<a class="headerlink" href="#module-ttt.models.markov_decision_process" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="ttt.models.markov_decision_process.TicTacToeMDP">
-<em class="property">class </em><code class="sig-prename descclassname">ttt.models.markov_decision_process.</code><code class="sig-name descname">TicTacToeMDP</code><a class="reference internal" href="../_modules/ttt/models/markov_decision_process.html#TicTacToeMDP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.markov_decision_process.TicTacToeMDP" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class modeling a Markov Decision Process</p>
-<dl class="attribute">
-<dt id="ttt.models.markov_decision_process.TicTacToeMDP.states">
-<code class="sig-name descname">states</code><a class="headerlink" href="#ttt.models.markov_decision_process.TicTacToeMDP.states" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dict of states</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="ttt.models.markov_decision_process.TicTacToeMDP.add_state">
-<code class="sig-name descname">add_state</code><span class="sig-paren">(</span><em class="sig-param">state: ttt.models.state.State</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/models/markov_decision_process.html#TicTacToeMDP.add_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.markov_decision_process.TicTacToeMDP.add_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the given state to the MDP.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>state</strong> (<em>ttt.models.State</em>) – State to be added.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="ttt.models.markov_decision_process.TicTacToeMDP.deserialize">
-<code class="sig-name descname">deserialize</code><span class="sig-paren">(</span><em class="sig-param">json_data: dict</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/models/markov_decision_process.html#TicTacToeMDP.deserialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.markov_decision_process.TicTacToeMDP.deserialize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dumps specified <cite>json_data</cite> to the MDP.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>json_data</strong> (<em>dict</em>) – Dictionary with the following format: {state_id (str): state (ttt.models.State)}</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="ttt.models.markov_decision_process.TicTacToeMDP.get_state">
-<code class="sig-name descname">get_state</code><span class="sig-paren">(</span><em class="sig-param">grid: numpy.ndarray</em><span class="sig-paren">)</span> &#x2192; ttt.models.state.State<a class="reference internal" href="../_modules/ttt/models/markov_decision_process.html#TicTacToeMDP.get_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.markov_decision_process.TicTacToeMDP.get_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the state with the given grid.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>grid</strong> (<em>numpy.ndarray</em>) – Representation of the board.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>state</strong> – State containing the given grid.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>ttt.models.State</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="ttt.models.markov_decision_process.TicTacToeMDP.has_state">
-<code class="sig-name descname">has_state</code><span class="sig-paren">(</span><em class="sig-param">state: ttt.models.state.State</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../_modules/ttt/models/markov_decision_process.html#TicTacToeMDP.has_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.markov_decision_process.TicTacToeMDP.has_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if MDP has registered the given state
-:param state: State to be checked
-:type state: ttt.models.State</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>is_registered</strong></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="ttt.models.markov_decision_process.TicTacToeMDP.serialize">
-<code class="sig-name descname">serialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="../_modules/ttt/models/markov_decision_process.html#TicTacToeMDP.serialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.markov_decision_process.TicTacToeMDP.serialize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Serializes this MDP into a dict.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>serializable_dict</strong></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="ttt.models.markov_decision_process.TicTacToeMDP.update_state">
-<code class="sig-name descname">update_state</code><span class="sig-paren">(</span><em class="sig-param">state: ttt.models.state.State</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/models/markov_decision_process.html#TicTacToeMDP.update_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.markov_decision_process.TicTacToeMDP.update_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Updates the MDPs state with the given one.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>state</strong> (<em>ttt.models.State</em>) – State to update MDPs with.</p>
-</dd>
-</dl>
 </dd></dl>
 
 </dd></dl>
