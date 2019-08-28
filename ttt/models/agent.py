@@ -44,8 +44,8 @@ class CPUAgent(Agent):
 
     Attributes
     ----------
-    states: dict
-        Dict of states. Representation of the game as a Markov Decision Process.
+    states: list
+        List of states. Representation of the game as a Markov Decision Process.
     """
 
     def __init__(self):
