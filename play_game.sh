@@ -1,0 +1,1 @@
+ttt-human-vs-cpu --cpu_weights_path pretrained_models/25000_15000_10000_weights.json --cpu_mode best
