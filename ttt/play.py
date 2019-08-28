@@ -37,8 +37,8 @@ def play_game_cpu_vs_cpu(player_1: CPUAgent, player_2: CPUAgent, player_1_mode: 
 
     assert num_rounds > 0
 
-    player_1_move = player_1.get_random_move if player_1_mode == 'random' else player_1.get_next_best_move
-    player_2_move = player_2.get_random_move if player_2_mode == 'random' else player_2.get_next_best_move
+    player_1_move = player_1.get_random_move if player_1_mode == 'random' else player_1.get_best_move
+    player_2_move = player_2.get_random_move if player_2_mode == 'random' else player_2.get_best_move
 
     player_1_victories = 0
     player_2_victories = 0
@@ -82,7 +82,7 @@ def play_game_player_vs_comp(cpu_player: CPUAgent, cpu_player_mode: str) -> Game
     """
 
     human_player = HumanAgent()
-    cpu_player_move = cpu_player.get_random_move if cpu_player_mode == 'random' else cpu_player.get_next_best_move
+    cpu_player_move = cpu_player.get_random_move if cpu_player_mode == 'random' else cpu_player.get_best_move
 
     human_player_victories = 0
     cpu_player_victories = 0
@@ -133,7 +133,7 @@ def play_game_player_vs_player() -> None:
 
     while True:
         start = (start + 1) % 2
-        game = play_game(Game(player_1, player_2), player_1.get_next_move, player_2.get_next_move(), start)
+        game = play_game(Game(player_1, player_2), player_1.get_next_move, player_2.get_next_move, start)
 
         if game.result == 1:
             player_1_victories += 1

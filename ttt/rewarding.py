@@ -59,8 +59,8 @@ def rewarding(game: Game, player_number: int, lr: float) -> CPUAgent:
         if i == len(game.game_sequence) - 1:
             break
 
-        agent_current_state = cpu_agent.mdp.get_state(current_state)
-        agent_next_state = cpu_agent.mdp.get_state(game.game_sequence[i + 1])
+        agent_current_state = cpu_agent.get_state(current_state)
+        agent_next_state = cpu_agent.get_state(game.game_sequence[i + 1])
         move = get_move(agent_current_state, agent_next_state)
 
         if agent_next_state.grid[move] != player_number:
@@ -80,6 +80,6 @@ def rewarding(game: Game, player_number: int, lr: float) -> CPUAgent:
         else:
             agent_current_state.update_transition_weight(move, math.exp(-(i + 1)) * lr / 10)
 
-        cpu_agent.mdp.update_state(agent_current_state)
+        cpu_agent.update_state(agent_current_state)
 
     return cpu_agent

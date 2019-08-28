@@ -1,9 +1,11 @@
 import numpy as np
+import pytest
 from numpy.testing import assert_array_equal
 
 from ttt.models import State
 
 
+@pytest.mark.unit
 def test_state_initializes_correctly():
     grid = np.array([0, 0, 0, 0, 0, 1, 2, 2, 0])
     state = State(grid)
@@ -13,6 +15,7 @@ def test_state_initializes_correctly():
     assert_array_equal(state.next_states_values, np.zeros(6))
 
 
+@pytest.mark.unit
 def test_state_initializes_correctly_when_grid_is_none():
     state = State()
 
@@ -21,6 +24,7 @@ def test_state_initializes_correctly_when_grid_is_none():
     assert state.next_states_values is None
 
 
+@pytest.mark.unit
 def test_state_compute_next_states_correctness():
     state = State()
     state.grid = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])
@@ -29,6 +33,7 @@ def test_state_compute_next_states_correctness():
     assert_array_equal(state.next_states_values, np.zeros(9))
 
 
+@pytest.mark.unit
 def test_state_update_transition_weight_correctness():
     grid = np.array([0, 1, 1, 2, 2, 1, 1, 2, 0])
     state = State(grid)
@@ -36,6 +41,7 @@ def test_state_update_transition_weight_correctness():
     assert_array_equal(state.next_states_values, np.array([0, -3]))
 
 
+@pytest.mark.unit
 def test_state_get_next_move():
     grid = np.array([0, 1, 1, 2, 2, 1, 1, 2, 0])
     state = State(grid)
@@ -44,6 +50,7 @@ def test_state_get_next_move():
     assert state.get_best_move() == 0
 
 
+@pytest.mark.unit
 def test_state_serialize():
     serialized_state = State(np.array([0, 1, 1, 2, 2, 1, 1, 2, 0])).serialize()
 
@@ -56,6 +63,7 @@ def test_state_serialize():
     assert serialized_state["next_states_transitions"] == [0, 8]
 
 
+@pytest.mark.unit
 def test_state_deserialize():
     state = State()
     state.deserialize({

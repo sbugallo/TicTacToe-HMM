@@ -1,11 +1,11 @@
 import json
 import random
 from pathlib import Path
+from typing import List
 
 import numpy as np
 from loguru import logger
 
-from .markov_decision_process import TicTacToeMDP
 from .state import State
 
 
@@ -44,13 +44,13 @@ class CPUAgent(Agent):
 
     Attributes
     ----------
-    mdp: ttt.models.TicTacToeMDP
-        Representation of the game as a Markov Decision Process.
+    states: list
+        List of states. Representation of the game as a Markov Decision Process.
     """
 
     def __init__(self):
         super().__init__()
-        self.mdp = TicTacToeMDP()
+        self.states: List[State] = []
 
     def update_grid(self, grid: np.ndarray) -> None:
         """
@@ -63,10 +63,11 @@ class CPUAgent(Agent):
         """
         super().update_grid(grid)
 
-        if not self.mdp.has_state(self.current_state):
-            self.mdp.add_state(self.current_state)
+        if not self.has_state(self.current_state):
+            self.add_state(self.current_state)
         else:
-            self.current_state = self.mdp.get_state(self.grid)
+            # Overwrite new State with the saved one
+            self.current_state = self.get_state(self.grid)
 
     def get_random_move(self) -> int:
         """
@@ -79,7 +80,7 @@ class CPUAgent(Agent):
         number_of_possible_moves = len(self.current_state.next_states_transitions)
         return self.current_state.next_states_transitions[random.randint(0, number_of_possible_moves - 1)]
 
-    def get_next_best_move(self) -> int:
+    def get_best_move(self) -> int:
         """
         Generates a new move using the previous knowledge.
 
@@ -88,6 +89,72 @@ class CPUAgent(Agent):
         move: int
         """
         return self.current_state.get_best_move()
+
+    def has_state(self, state: State) -> bool:
+        """
+        Checks if MDP has registered the given state
+        Parameters
+        ----------
+        state: ttt.models.State
+            State to be checked
+
+        Returns
+        -------
+        is_registered: bool
+        """
+
+        for entry in self.states:
+            if np.array_equal(state.grid, entry.grid):
+                return True
+
+        return False
+
+    def add_state(self, state: State) -> None:
+        """
+        Adds the given state to the MDP.
+
+        Parameters
+        ----------
+        state: ttt.models.State
+            State to be added.
+        """
+        self.states.append(State(state.grid))
+
+    def get_state(self, grid: np.ndarray) -> State:
+        """
+        Gets the state with the given grid.
+
+        Parameters
+        ----------
+        grid: numpy.ndarray
+            Representation of the board.
+
+        Returns
+        -------
+        state: ttt.models.State
+            State containing the given grid.
+        """
+        for state in self.states:
+            if np.array_equal(grid, state.grid):
+                return state
+
+        raise ValueError(f"Grid {grid} could not be found in saved states "
+                         f"{[state.grid for state in self.states]}")
+
+    def update_state(self, state: State) -> None:
+        """
+        Updates the MDPs state with the given one.
+
+        Parameters
+        ----------
+        state: ttt.models.State
+            State to update MDPs with.
+        """
+
+        for index, entry in enumerate(self.states):
+            if np.array_equal(state.grid, entry.grid):
+                entry.next_states_values = state.next_states_values.copy()
+                self.states[index] = entry
 
     def serialize(self) -> dict:
         """
@@ -99,7 +166,7 @@ class CPUAgent(Agent):
         """
 
         return {
-            "mdp": self.mdp.serialize()
+            "states": [state.serialize() for state in self.states]
         }
 
     def deserialize(self, json_data: dict) -> None:
@@ -112,9 +179,10 @@ class CPUAgent(Agent):
             Dictionary with the following format: {mdp: dict}
         """
 
-        mdp = TicTacToeMDP()
-        mdp.deserialize(json_data["mdp"])
-        self.mdp = mdp
+        for serialized_state in json_data["states"]:
+            state = State()
+            state.deserialize(serialized_state)
+            self.states.append(state)
 
         logger.debug(f"Loaded agent")
 
