@@ -21,7 +21,7 @@ VERSION = '2019.08'
 
 # -- Project information -----------------------------------------------------
 
-project = 'TicTacToe MDP'
+project = 'TicTacToe HMM'
 copyright = '2019, Sergio Bugallo'
 author = 'Sergio Bugallo'
 

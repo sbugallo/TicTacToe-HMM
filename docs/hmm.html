@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Markov Decision Processes &mdash; Tic-Tac-Toe</title>
+  <title>Hidden Markov Models &mdash; Tic-Tac-Toe</title>
   
 
   
@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Installation" href="installation.html" />
-    <link rel="prev" title="TicTacToe-MDP" href="index.html" /> 
+    <link rel="prev" title="Markov Decision Processes" href="mdp.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -54,7 +54,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> TicTacToe MDP
+            <a href="index.html" class="icon icon-home"> TicTacToe HMM
           
 
           
@@ -92,9 +92,9 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Markov Decision Processes</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="mdp.html">Markov Decision Processes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hidden Markov Models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#episodic-tasks">Episodic tasks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exploration-vs-exploitation">Exploration VS Exploitation</a></li>
 </ul>
 </li>
@@ -115,7 +115,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">TicTacToe MDP</a>
+          <a href="index.html">TicTacToe HMM</a>
         
       </nav>
 
@@ -146,13 +146,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Markov Decision Processes</li>
+      <li>Hidden Markov Models</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/ai.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/hmm.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -165,7 +165,7 @@
         <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="TicTacToe-MDP" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mdp.html" class="btn btn-neutral float-left" title="Markov Decision Processes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -174,34 +174,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="markov-decision-processes">
-<span id="ai"></span><h1>Markov Decision Processes<a class="headerlink" href="#markov-decision-processes" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="hidden-markov-models">
+<span id="hmm"></span><h1>Hidden Markov Models<a class="headerlink" href="#hidden-markov-models" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>In an MDP, we have an agent that interacts with it’s environment. These interactions occur sequentially over time. At
-each time step, the agent will get some representation of the environment’s. Then, the agent selects an action to take.
-The environment is then transitioned into a new state and the agent is given a reward as a consequence of the previous
-action.</p>
-<p>Components:</p>
-<ul class="simple">
-<li><p>Agent</p></li>
-<li><p>State</p></li>
-<li><p>Action</p></li>
-<li><p>Reward</p></li>
-</ul>
-<p>The agent’s goal is to maximize the rewards that it receives from taking actions.</p>
-<p>In an MDP, we have a set of states <span class="math notranslate nohighlight">\(S\)</span>, a set of actions <span class="math notranslate nohighlight">\(A\)</span>, and a set of rewards <span class="math notranslate nohighlight">\(R\)</span>.</p>
-<p>At each time step <span class="math notranslate nohighlight">\(t=0,1,2,...\)</span>, the agent receives some representation of the environment’s state
-<span class="math notranslate nohighlight">\(S_t \in S\)</span>. Based on this state, the agent selects an action <span class="math notranslate nohighlight">\(A_t \in A\)</span>.</p>
-<p>Time is then incremented to the next time step <span class="math notranslate nohighlight">\(t+1.\)</span>, and the environment is transitioned to a new state
-<span class="math notranslate nohighlight">\(S_{t+1} \in S\)</span>. At this time, the agent receives a numerical reward <span class="math notranslate nohighlight">\(R_{t+1} \in R\)</span> for the action
-<span class="math notranslate nohighlight">\(A_t\)</span> taken from state <span class="math notranslate nohighlight">\(S_t\)</span>.</p>
-</div>
-<div class="section" id="episodic-tasks">
-<h2>Episodic tasks<a class="headerlink" href="#episodic-tasks" title="Permalink to this headline">¶</a></h2>
-<p>TicTacToe is an episodic task, being each episode a round. In episodic tasks, each episode ends in a terminal state at
-time <span class="math notranslate nohighlight">\(T\)</span>, which is followed by resetting the environment to its initial state. The next episode then begins
-independently from how the previous episode ended.</p>
+<p>Hidden Markov Model (HMM) is a statistical Markov model in which the system being modeled is assumed to be a Markov
+process with unobservable (i.e. hidden) states.</p>
+<p>In simpler Markov models (like a Markov chain), the state is directly visible to the observer, and therefore the state
+transition probabilities are the only parameters, while in the hidden Markov model, the state is not directly visible,
+but the output (in the form of data or “token” in the following), dependent on the state, is visible. Each state has a
+probability distribution over the possible output tokens. Therefore, the sequence of tokens generated by an HMM gives
+some information about the sequence of states; this is also known as pattern theory.</p>
 </div>
 <div class="section" id="exploration-vs-exploitation">
 <h2>Exploration VS Exploitation<a class="headerlink" href="#exploration-vs-exploitation" title="Permalink to this headline">¶</a></h2>
@@ -235,7 +218,7 @@ learn a lot about the odds of each machine but probably wouldn’t make as much 
         <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="TicTacToe-MDP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mdp.html" class="btn btn-neutral float-left" title="Markov Decision Processes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="_static/styles.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markov Decision Processes" href="ai.html" /> 
+    <link rel="next" title="Markov Decision Processes" href="mdp.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -53,7 +53,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> TicTacToe MDP
+            <a href="#" class="icon icon-home"> TicTacToe HMM
           
 
           
@@ -91,7 +91,8 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="ai.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mdp.html">Markov Decision Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hmm.html">Hidden Markov Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">API Reference</a></li>
@@ -109,7 +110,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">TicTacToe MDP</a>
+          <a href="#">TicTacToe HMM</a>
         
       </nav>
 
@@ -156,7 +157,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="ai.html" class="btn btn-neutral float-right" title="Markov Decision Processes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mdp.html" class="btn btn-neutral float-right" title="Markov Decision Processes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
   </div>
@@ -175,10 +176,23 @@ marks in a horizontal, vertical, or diagonal row wins the game.”</p>
 <p>– Wikipedia</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="ai.html">Markov Decision Processes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ai.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ai.html#episodic-tasks">Episodic tasks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ai.html#exploration-vs-exploitation">Exploration VS Exploitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mdp.html">Markov Decision Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html#markov-chain">Markov Chain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html#markov-decision-process-mdp">Markov Decision Process (MDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html#rewards-and-returns">Rewards and returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html#episodic-vs-continuous-tasks">Episodic VS Continuous Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html#policy-function">Policy Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html#state-value-function">State Value Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html#state-action-value-function-q-function">State-action Value function (Q function)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html#bellman-equation">Bellman equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html#value-iteration">Value Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdp.html#policy-iteration">Policy Iteration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hmm.html">Hidden Markov Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hmm.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmm.html#exploration-vs-exploitation">Exploration VS Exploitation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
@@ -214,7 +228,7 @@ marks in a horizontal, vertical, or diagonal row wins the game.”</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ai.html" class="btn btn-neutral float-right" title="Markov Decision Processes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mdp.html" class="btn btn-neutral float-right" title="Markov Decision Processes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
