@@ -15,7 +15,8 @@ marks in a horizontal, vertical, or diagonal row wins the game."
 ..  toctree::
     :maxdepth: 2
 
-    ai
+    mdp
+    hmm
     installation
     usage
     reference
