@@ -1,10 +1,10 @@
-# Tic-Tac-Toe AI - Markov Decision Process
+# Tic-Tac-Toe AI - Hidden Markov Model
 
 [![CodeFactor](https://www.codefactor.io/repository/github/sbugallo/tictactoe-hmm/badge)](https://www.codefactor.io/repository/github/sbugallo/tictactoe-hmm)
 [![Build Status](https://travis-ci.com/sbugallo/TicTacToe-HMM.svg)](https://travis-ci.com/sbugallo/TicTacToe-HMM)
 [![Coverage Status](https://coveralls.io/repos/github/sbugallo/TicTacToe-HMM/badge.svg?branch=master)](https://coveralls.io/github/sbugallo/TicTacToe-HMM?branch=master)
 
-<img src="https://raw.githubusercontent.com/sbugallo/TicTacToe-HMM/maseter/docs/_static/logo-color.png" width="50%" />
+<img src="https://raw.githubusercontent.com/sbugallo/TicTacToe-HMM/master/docs/_static/logo-color.png" width="50%" />
 
 ## Game description
 
