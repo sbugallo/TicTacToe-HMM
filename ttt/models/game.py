@@ -3,6 +3,7 @@ from loguru import logger
 from colorama import init, Fore
 
 from .agent import Agent
+from .action import Action
 
 
 class Game:
@@ -38,19 +39,19 @@ class Game:
 
         self.game_sequence = [self.grid.copy()]
 
-    def apply_move(self, move: int, player_id: int) -> None:
+    def apply_move(self, move: Action, player_id: int) -> None:
         """
         Commits the move over the board.
 
         Parameters
         ----------
-        move: int
-            Cell to mark.
+        move: ttt.models.Action
+            Move to be performed.
         player_id: int
             Value to apply.
         """
 
-        self.grid[move] = int(player_id)
+        self.grid[move.value] = int(player_id)
 
         self.player_1.update_grid(self.grid.copy())
         self.player_2.update_grid(self.grid.copy())

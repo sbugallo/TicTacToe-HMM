@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from numpy.testing import assert_array_equal
 
-from ttt.models import CPUAgent, State
+from ttt.models import CPUAgent, State, Action
 from ttt.play import play_game_cpu_vs_cpu
 from ttt.rewarding import rewarding, get_move
 
@@ -15,12 +15,17 @@ def sample_game():
 
 @pytest.mark.unit
 @pytest.mark.parametrize("state_1, state_2, expected_move", [
-    (State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])), State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 1])), 8),
-    (State(np.array([0, 2, 1, 2, 1, 2, 1, 2, 1])), State(np.array([1, 2, 1, 2, 1, 2, 1, 2, 1])), 0),
-    (State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])), State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])), -1),
+    (State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])), State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 1])), Action.bottom_right),
+    (State(np.array([0, 2, 1, 2, 1, 2, 1, 2, 1])), State(np.array([1, 2, 1, 2, 1, 2, 1, 2, 1])), Action.top_left),
 ])
 def test_get_move_correctness(state_1, state_2, expected_move):
     assert expected_move == get_move(state_1, state_2)
+
+
+@pytest.mark.unit
+def test_get_move_raises_value_error_if_cannot_go_from_state1_to_state2():
+    with pytest.raises(ValueError, match="Cannot go from state_1"):
+        get_move(State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])), State(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])))
 
 
 @pytest.mark.unit
