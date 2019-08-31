@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ttt.models.actions &mdash; Tic-Tac-Toe</title>
+  <title>ttt.models.reward &mdash; Tic-Tac-Toe</title>
   
 
   
@@ -142,7 +142,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>ttt.models.actions</li>
+      <li>ttt.models.reward</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -157,34 +157,66 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for ttt.models.actions</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="k">import</span> <span class="n">IntEnum</span><span class="p">,</span> <span class="n">Enum</span>
+  <h1>Source code for ttt.models.reward</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
 
 
-<div class="viewcode-block" id="Actions"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.actions.Actions">[docs]</a><span class="k">class</span> <span class="nc">Actions</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Models all possible actions</span>
+<div class="viewcode-block" id="Reward"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.reward.Reward">[docs]</a><span class="k">class</span> <span class="nc">Reward</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Models all possible rewards.&quot;&quot;&quot;</span>
 
-<span class="sd">    Attributes</span>
-<span class="sd">    top_left: int</span>
-<span class="sd">    top_center: int</span>
-<span class="sd">    top_right: int</span>
-<span class="sd">    middle_left: int</span>
-<span class="sd">    middle_center: int</span>
-<span class="sd">    middle_right: int</span>
-<span class="sd">    bottom_left: int</span>
-<span class="sd">    bottom_center: int</span>
-<span class="sd">    bottom_right: int</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">top_left</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">top_center</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">top_right</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="n">middle_left</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>
-    <span class="n">middle_center</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="n">middle_right</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
-    <span class="n">bottom_left</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6</span>
-    <span class="n">bottom_center</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">7</span>
-    <span class="n">bottom_right</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span></div>
+<div class="viewcode-block" id="Reward.win"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.reward.Reward.win">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">win</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">lr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the reward for a given state when the result was a win.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        i: int</span>
+<span class="sd">            Position in which the state was reached</span>
+<span class="sd">        lr: float</span>
+<span class="sd">            Learning rate</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        reward: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">lr</span></div>
+
+<div class="viewcode-block" id="Reward.defeat"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.reward.Reward.defeat">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">defeat</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">lr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the reward for a given state when the result was a defeat.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        i: int</span>
+<span class="sd">            Position in which the state was reached</span>
+<span class="sd">        lr: float</span>
+<span class="sd">            Learning rate</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        reward: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span> <span class="o">*</span> <span class="n">lr</span> <span class="o">/</span> <span class="mi">2</span></div>
+
+<div class="viewcode-block" id="Reward.tie"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.reward.Reward.tie">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">tie</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">lr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the reward for a given state when the result was a tie.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        i: int</span>
+<span class="sd">            Position in which the state was reached</span>
+<span class="sd">        lr: float</span>
+<span class="sd">            Learning rate</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        reward: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span> <span class="o">*</span> <span class="n">lr</span> <span class="o">/</span> <span class="mi">10</span></div></div>
 </pre></div>
 
            </div>

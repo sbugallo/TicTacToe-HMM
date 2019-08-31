@@ -1,7 +1,7 @@
 import math
 
 
-class Rewards:
+class Reward:
     """Models all possible rewards."""
 
     @staticmethod

@@ -9,10 +9,10 @@ ttt.models package
 Submodules
 ----------
 
-ttt.models.actions module
--------------------------
+ttt.models.action module
+------------------------
 
-.. automodule:: ttt.models.actions
+.. automodule:: ttt.models.action
    :members:
    :undoc-members:
    :show-inheritance:
@@ -29,6 +29,14 @@ ttt.models.game module
 ----------------------
 
 .. automodule:: ttt.models.game
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ttt.models.reward module
+------------------------
+
+.. automodule:: ttt.models.reward
    :members:
    :undoc-members:
    :show-inheritance:

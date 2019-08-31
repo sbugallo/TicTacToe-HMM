@@ -7,7 +7,7 @@ import numpy as np
 from loguru import logger
 
 from .state import State
-from .actions import Actions
+from .action import Action
 
 
 class Agent:
@@ -241,4 +241,4 @@ class HumanAgent(Agent):
             logger.info(f"The cell is already marked. Pleas, select another cell.\n\n"
                         f"Which cell do you want to mark? {possible_moves}: ")
             move = int(input())
-        return Actions(move - 1)
+        return Action(move - 1)

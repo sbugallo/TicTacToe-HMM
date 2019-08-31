@@ -8,7 +8,7 @@ import pytest
 from numpy.testing import assert_array_equal
 
 from ttt.models.agent import Agent, CPUAgent, HumanAgent, State
-from ttt.models.actions import Actions
+from ttt.models.action import Action
 
 
 def deterministic_test(seed):
@@ -53,8 +53,8 @@ def test_agent_updates_grid_correctly():
     assert_array_equal(new_grid, agent.current_state.grid)
 
     assert_array_equal(agent.current_state.next_states_values, np.array([0, 0]))
-    assert_array_equal(agent.current_state.next_states_transitions, np.array([Actions.bottom_center,
-                                                                              Actions.bottom_right]))
+    assert_array_equal(agent.current_state.next_states_transitions, np.array([Action.bottom_center,
+                                                                              Action.bottom_right]))
 
 
 @pytest.mark.unit
@@ -76,15 +76,15 @@ def test_cpuagent_updates_grid_correctly():
     assert_array_equal(new_grid, agent.current_state.grid)
 
     assert_array_equal(agent.current_state.next_states_values, np.array([0, 0]))
-    assert_array_equal(agent.current_state.next_states_transitions, np.array([Actions.bottom_center,
-                                                                              Actions.bottom_right]))
+    assert_array_equal(agent.current_state.next_states_transitions, np.array([Action.bottom_center,
+                                                                              Action.bottom_right]))
 
     assert len(agent.states) == 1
 
     new_state = agent.states[0]
     assert_array_equal(new_grid, new_state.grid)
     assert_array_equal(new_state.next_states_values, np.array([0, 0]))
-    assert_array_equal(new_state.next_states_transitions, np.array([Actions.bottom_center, Actions.bottom_right]))
+    assert_array_equal(new_state.next_states_transitions, np.array([Action.bottom_center, Action.bottom_right]))
 
 
 @pytest.mark.unit
@@ -99,8 +99,8 @@ def test_cpuagent_generates_random_moves():
         generated_moves.add(agent.get_random_move())
 
     assert len(generated_moves) == 2
-    assert Actions.bottom_center in generated_moves
-    assert Actions.bottom_right in generated_moves
+    assert Action.bottom_center in generated_moves
+    assert Action.bottom_right in generated_moves
 
 
 @pytest.mark.unit
@@ -116,8 +116,8 @@ def test_cpuagent_generates_best_move_correctly():
         generated_moves.add(agent.get_best_move())
 
     assert len(generated_moves) == 1
-    assert Actions.bottom_center not in generated_moves
-    assert Actions.bottom_right in generated_moves
+    assert Action.bottom_center not in generated_moves
+    assert Action.bottom_right in generated_moves
 
 
 @pytest.mark.unit
@@ -151,14 +151,14 @@ def test_cpuagent_deserializes_correctly():
             {
                 'grid': [0, 0, 0, 0, 0, 0, 0, 0, 0],
                 'next_states_values': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-                'next_states_transitions': [Actions.top_left, Actions.top_center, Actions.top_right,
-                                            Actions.middle_left, Actions.middle_center, Actions.middle_right,
-                                            Actions.bottom_left, Actions.bottom_center, Actions.bottom_right]
+                'next_states_transitions': [Action.top_left, Action.top_center, Action.top_right,
+                                            Action.middle_left, Action.middle_center, Action.middle_right,
+                                            Action.bottom_left, Action.bottom_center, Action.bottom_right]
             },
             {
                 'grid': [1, 1, 1, 1, 1, 1, 1, 1, 0],
                 'next_states_values': [0.0],
-                'next_states_transitions': [Actions.bottom_right]
+                'next_states_transitions': [Action.bottom_right]
             }
         ]
     }
@@ -172,12 +172,12 @@ def test_cpuagent_deserializes_correctly():
     assert_array_equal(agent.states[0].next_states_values, np.array([0, 0, 0, 0, 0, 0, 0, 0, 0]))
     assert_array_equal(agent.states[1].next_states_values, np.array([0]))
 
-    assert_array_equal(agent.states[0].next_states_transitions, np.array([Actions.top_left, Actions.top_center,
-                                                                          Actions.top_right, Actions.middle_left,
-                                                                          Actions.middle_center, Actions.middle_right,
-                                                                          Actions.bottom_left, Actions.bottom_center,
-                                                                          Actions.bottom_right]))
-    assert_array_equal(agent.states[1].next_states_transitions, np.array([Actions.bottom_right]))
+    assert_array_equal(agent.states[0].next_states_transitions, np.array([Action.top_left, Action.top_center,
+                                                                          Action.top_right, Action.middle_left,
+                                                                          Action.middle_center, Action.middle_right,
+                                                                          Action.bottom_left, Action.bottom_center,
+                                                                          Action.bottom_right]))
+    assert_array_equal(agent.states[1].next_states_transitions, np.array([Action.bottom_right]))
 
 
 @pytest.mark.unit
@@ -287,8 +287,8 @@ def test_humanagent_updates_grid_correctly():
     assert_array_equal(new_grid, agent.current_state.grid)
 
     assert_array_equal(agent.current_state.next_states_values, np.array([0, 0]))
-    assert_array_equal(agent.current_state.next_states_transitions, np.array([Actions.bottom_center,
-                                                                              Actions.bottom_right]))
+    assert_array_equal(agent.current_state.next_states_transitions, np.array([Action.bottom_center,
+                                                                              Action.bottom_right]))
 
 
 @pytest.mark.unit
@@ -298,7 +298,7 @@ def test_humanagent_generates_move_correctly(mocker):
     with mocker.patch('builtins.input', return_value=8):
         new_grid = np.array([1, 2, 1, 2, 1, 2, 1, 0, 0])
         agent.update_grid(new_grid)
-        assert agent.get_next_move() == Actions.bottom_center
+        assert agent.get_next_move() == Action.bottom_center
 
 
 @pytest.mark.unit
@@ -308,5 +308,5 @@ def test_humanagent_loops_till_correct_move_correctly(mocker):
     with mocker.patch('builtins.input', side_effect=[0, 1, 2, 3, 4, 5, 6, 7, 8]):
         new_grid = np.array([1, 2, 1, 2, 1, 2, 1, 0, 0])
         agent.update_grid(new_grid)
-        assert agent.get_next_move() == Actions.bottom_center
+        assert agent.get_next_move() == Action.bottom_center
         assert builtins.input.call_count == 9

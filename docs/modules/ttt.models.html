@@ -100,9 +100,10 @@
 <li class="toctree-l2"><a class="reference internal" href="ttt.cli.html">ttt.cli package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ttt.models package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-ttt.models.actions">ttt.models.actions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ttt.models.action">ttt.models.action module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-ttt.models.agent">ttt.models.agent module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-ttt.models.game">ttt.models.game module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ttt.models.reward">ttt.models.reward module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-ttt.models.state">ttt.models.state module</a></li>
 </ul>
 </li>
@@ -189,66 +190,56 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-ttt.models.actions">
-<span id="ttt-models-actions-module"></span><h2>ttt.models.actions module<a class="headerlink" href="#module-ttt.models.actions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-ttt.models.action">
+<span id="ttt-models-action-module"></span><h2>ttt.models.action module<a class="headerlink" href="#module-ttt.models.action" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="ttt.models.actions.Actions">
-<em class="property">class </em><code class="sig-prename descclassname">ttt.models.actions.</code><code class="sig-name descname">Actions</code><a class="reference internal" href="../_modules/ttt/models/actions.html#Actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.actions.Actions" title="Permalink to this definition">¶</a></dt>
+<dt id="ttt.models.action.Action">
+<em class="property">class </em><code class="sig-prename descclassname">ttt.models.action.</code><code class="sig-name descname">Action</code><a class="reference internal" href="../_modules/ttt/models/action.html#Action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.action.Action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
-<p>Models all possible actions</p>
-<p>Attributes
-top_left: int
-top_center: int
-top_right: int
-middle_left: int
-middle_center: int
-middle_right: int
-bottom_left: int
-bottom_center: int
-bottom_right: int</p>
+<p>Models all possible actions.</p>
 <dl class="attribute">
-<dt id="ttt.models.actions.Actions.bottom_center">
-<code class="sig-name descname">bottom_center</code><em class="property"> = 7</em><a class="headerlink" href="#ttt.models.actions.Actions.bottom_center" title="Permalink to this definition">¶</a></dt>
+<dt id="ttt.models.action.Action.bottom_center">
+<code class="sig-name descname">bottom_center</code><em class="property"> = 7</em><a class="headerlink" href="#ttt.models.action.Action.bottom_center" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ttt.models.actions.Actions.bottom_left">
-<code class="sig-name descname">bottom_left</code><em class="property"> = 6</em><a class="headerlink" href="#ttt.models.actions.Actions.bottom_left" title="Permalink to this definition">¶</a></dt>
+<dt id="ttt.models.action.Action.bottom_left">
+<code class="sig-name descname">bottom_left</code><em class="property"> = 6</em><a class="headerlink" href="#ttt.models.action.Action.bottom_left" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ttt.models.actions.Actions.bottom_right">
-<code class="sig-name descname">bottom_right</code><em class="property"> = 8</em><a class="headerlink" href="#ttt.models.actions.Actions.bottom_right" title="Permalink to this definition">¶</a></dt>
+<dt id="ttt.models.action.Action.bottom_right">
+<code class="sig-name descname">bottom_right</code><em class="property"> = 8</em><a class="headerlink" href="#ttt.models.action.Action.bottom_right" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ttt.models.actions.Actions.middle_center">
-<code class="sig-name descname">middle_center</code><em class="property"> = 4</em><a class="headerlink" href="#ttt.models.actions.Actions.middle_center" title="Permalink to this definition">¶</a></dt>
+<dt id="ttt.models.action.Action.middle_center">
+<code class="sig-name descname">middle_center</code><em class="property"> = 4</em><a class="headerlink" href="#ttt.models.action.Action.middle_center" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ttt.models.actions.Actions.middle_left">
-<code class="sig-name descname">middle_left</code><em class="property"> = 3</em><a class="headerlink" href="#ttt.models.actions.Actions.middle_left" title="Permalink to this definition">¶</a></dt>
+<dt id="ttt.models.action.Action.middle_left">
+<code class="sig-name descname">middle_left</code><em class="property"> = 3</em><a class="headerlink" href="#ttt.models.action.Action.middle_left" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ttt.models.actions.Actions.middle_right">
-<code class="sig-name descname">middle_right</code><em class="property"> = 5</em><a class="headerlink" href="#ttt.models.actions.Actions.middle_right" title="Permalink to this definition">¶</a></dt>
+<dt id="ttt.models.action.Action.middle_right">
+<code class="sig-name descname">middle_right</code><em class="property"> = 5</em><a class="headerlink" href="#ttt.models.action.Action.middle_right" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ttt.models.actions.Actions.top_center">
-<code class="sig-name descname">top_center</code><em class="property"> = 1</em><a class="headerlink" href="#ttt.models.actions.Actions.top_center" title="Permalink to this definition">¶</a></dt>
+<dt id="ttt.models.action.Action.top_center">
+<code class="sig-name descname">top_center</code><em class="property"> = 1</em><a class="headerlink" href="#ttt.models.action.Action.top_center" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ttt.models.actions.Actions.top_left">
-<code class="sig-name descname">top_left</code><em class="property"> = 0</em><a class="headerlink" href="#ttt.models.actions.Actions.top_left" title="Permalink to this definition">¶</a></dt>
+<dt id="ttt.models.action.Action.top_left">
+<code class="sig-name descname">top_left</code><em class="property"> = 0</em><a class="headerlink" href="#ttt.models.action.Action.top_left" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ttt.models.actions.Actions.top_right">
-<code class="sig-name descname">top_right</code><em class="property"> = 2</em><a class="headerlink" href="#ttt.models.actions.Actions.top_right" title="Permalink to this definition">¶</a></dt>
+<dt id="ttt.models.action.Action.top_right">
+<code class="sig-name descname">top_right</code><em class="property"> = 2</em><a class="headerlink" href="#ttt.models.action.Action.top_right" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -565,12 +556,12 @@ bottom_right: int</p>
 </dl>
 <dl class="method">
 <dt id="ttt.models.game.Game.apply_move">
-<code class="sig-name descname">apply_move</code><span class="sig-paren">(</span><em class="sig-param">move: ttt.models.actions.Actions</em>, <em class="sig-param">player_id: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/models/game.html#Game.apply_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.game.Game.apply_move" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">apply_move</code><span class="sig-paren">(</span><em class="sig-param">move: ttt.models.action.Action</em>, <em class="sig-param">player_id: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/models/game.html#Game.apply_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.game.Game.apply_move" title="Permalink to this definition">¶</a></dt>
 <dd><p>Commits the move over the board.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>move</strong> (<a class="reference internal" href="#ttt.models.actions.Actions" title="ttt.models.actions.Actions"><em>Actions</em></a>) – Move to be performed.</p></li>
+<li><p><strong>move</strong> (<em>ttt.models.Action</em>) – Move to be performed.</p></li>
 <li><p><strong>player_id</strong> (<em>int</em>) – Value to apply.</p></li>
 </ul>
 </dd>
@@ -611,6 +602,76 @@ bottom_right: int</p>
 <dt id="ttt.models.game.Game.print_board">
 <code class="sig-name descname">print_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="reference internal" href="../_modules/ttt/models/game.html#Game.print_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.game.Game.print_board" title="Permalink to this definition">¶</a></dt>
 <dd><p>Displays the current grid.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ttt.models.reward">
+<span id="ttt-models-reward-module"></span><h2>ttt.models.reward module<a class="headerlink" href="#module-ttt.models.reward" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ttt.models.reward.Reward">
+<em class="property">class </em><code class="sig-prename descclassname">ttt.models.reward.</code><code class="sig-name descname">Reward</code><a class="reference internal" href="../_modules/ttt/models/reward.html#Reward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.reward.Reward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Models all possible rewards.</p>
+<dl class="method">
+<dt id="ttt.models.reward.Reward.defeat">
+<em class="property">static </em><code class="sig-name descname">defeat</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">lr</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ttt/models/reward.html#Reward.defeat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.reward.Reward.defeat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the reward for a given state when the result was a defeat.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Position in which the state was reached</p></li>
+<li><p><strong>lr</strong> (<em>float</em>) – Learning rate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>reward</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ttt.models.reward.Reward.tie">
+<em class="property">static </em><code class="sig-name descname">tie</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">lr</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ttt/models/reward.html#Reward.tie"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.reward.Reward.tie" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the reward for a given state when the result was a tie.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Position in which the state was reached</p></li>
+<li><p><strong>lr</strong> (<em>float</em>) – Learning rate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>reward</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ttt.models.reward.Reward.win">
+<em class="property">static </em><code class="sig-name descname">win</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">lr</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ttt/models/reward.html#Reward.win"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.reward.Reward.win" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the reward for a given state when the result was a win.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Position in which the state was reached</p></li>
+<li><p><strong>lr</strong> (<em>float</em>) – Learning rate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>reward</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -694,7 +755,7 @@ bottom_right: int</p>
 
 <dl class="method">
 <dt id="ttt.models.state.State.update_transition_weight">
-<code class="sig-name descname">update_transition_weight</code><span class="sig-paren">(</span><em class="sig-param">transition: ttt.models.actions.Actions</em>, <em class="sig-param">increase: float</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/models/state.html#State.update_transition_weight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.state.State.update_transition_weight" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update_transition_weight</code><span class="sig-paren">(</span><em class="sig-param">transition: ttt.models.action.Action</em>, <em class="sig-param">increase: float</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/ttt/models/state.html#State.update_transition_weight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.models.state.State.update_transition_weight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the transition weights.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

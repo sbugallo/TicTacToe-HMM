@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class Actions(Enum):
+class Action(Enum):
     """Models all possible actions."""
     top_left: int = 0
     top_center: int = 1

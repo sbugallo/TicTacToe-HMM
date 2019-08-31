@@ -1,5 +1,5 @@
 import numpy as np
-from .actions import Actions
+from .action import Action
 
 
 class State:
@@ -33,10 +33,10 @@ class State:
 
     def _compute_next_states(self) -> None:
         """Computes all possible next states (grids) alongside the related move and weights (equals)"""
-        self.next_states_transitions = np.array([Actions(move) for move in np.where(self.grid == 0)[0]])
+        self.next_states_transitions = np.array([Action(move) for move in np.where(self.grid == 0)[0]])
         self.next_states_values = np.zeros(self.next_states_transitions.shape)
 
-    def update_transition_weight(self, transition: Actions, increase: float) -> None:
+    def update_transition_weight(self, transition: Action, increase: float) -> None:
         """
         Updates the transition weights.
 
@@ -76,7 +76,7 @@ class State:
         """
         self.grid = np.array(json_data["grid"])
         self.next_states_values = np.array(json_data["next_states_values"])
-        self.next_states_transitions = np.array([Actions(move) for move in json_data["next_states_transitions"]])
+        self.next_states_transitions = np.array([Action(move) for move in json_data["next_states_transitions"]])
 
     def get_best_move(self) -> int:
         """Decides on the best available move based on the transition weights."""
