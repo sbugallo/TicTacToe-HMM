@@ -14,7 +14,7 @@ setup(
     description='tic-tac-toe game',
     author='Sergio Bugallo Enjamio',
     tests_require=['pytest'],
-    install_requires=["", 'loguru', 'numpy', 'fire'],
+    install_requires=["", 'loguru', 'numpy', 'fire', 'colorama'],
     author_email="sergiobugalloenjamio@gmail.com",
 
     license='Propietary',

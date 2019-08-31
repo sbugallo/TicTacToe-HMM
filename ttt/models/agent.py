@@ -7,6 +7,7 @@ import numpy as np
 from loguru import logger
 
 from .state import State
+from .action import Action
 
 
 class Agent:
@@ -69,24 +70,24 @@ class CPUAgent(Agent):
             # Overwrite new State with the saved one
             self.current_state = self.get_state(self.grid)
 
-    def get_random_move(self) -> int:
+    def get_random_move(self) -> Action:
         """
         Generates a random move.
 
         Returns
         -------
-        move: int
+        move: ttt.models.Action
         """
         number_of_possible_moves = len(self.current_state.next_states_transitions)
-        return self.current_state.next_states_transitions[random.randint(0, number_of_possible_moves - 1)]
+        return Action(self.current_state.next_states_transitions[random.randint(0, number_of_possible_moves - 1)])
 
-    def get_best_move(self) -> int:
+    def get_best_move(self) -> Action:
         """
         Generates a new move using the previous knowledge.
 
         Returns
         -------
-        move: int
+        move: ttt.models.Action
         """
         return self.current_state.get_best_move()
 
@@ -225,7 +226,7 @@ class HumanAgent(Agent):
     def __init__(self):
         super().__init__()
 
-    def get_next_move(self) -> int:
+    def get_next_move(self) -> Action:
         """
         Gets the user move.
 
@@ -233,11 +234,11 @@ class HumanAgent(Agent):
         -------
         move: int
         """
-        possible_moves = [cell_id + 1 for cell_id in self.current_state.next_states_transitions]
+        possible_moves = [action.value + 1 for action in self.current_state.next_states_transitions]
         logger.info(f"Which cell do you want to mark? {possible_moves}: ")
         move = int(input())
         while move not in possible_moves:
             logger.info(f"The cell is already marked. Pleas, select another cell.\n\n"
                         f"Which cell do you want to mark? {possible_moves}: ")
             move = int(input())
-        return move - 1
+        return Action(move - 1)

@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from numpy.testing import assert_array_equal
 
-from ttt.models import Game, CPUAgent, HumanAgent
+from ttt.models import Game, CPUAgent, HumanAgent, Action
 
 
 @pytest.mark.unit
@@ -23,8 +23,8 @@ def test_game_initializes_correctly():
 
 @pytest.mark.unit
 @pytest.mark.parametrize("move, player_id, expected_result", [
-    (1, 1, np.array([0, 1, 0, 0, 0, 0, 0, 0, 0])),
-    (8, 2, np.array([0, 0, 0, 0, 0, 0, 0, 0, 2])),
+    (Action.top_center, 1, np.array([0, 1, 0, 0, 0, 0, 0, 0, 0])),
+    (Action.bottom_right, 2, np.array([0, 0, 0, 0, 0, 0, 0, 0, 2])),
 ])
 def test_game_applies_move_correctly(move, player_id, expected_result):
     game = Game(CPUAgent(), CPUAgent())
@@ -34,15 +34,15 @@ def test_game_applies_move_correctly(move, player_id, expected_result):
 
 @pytest.mark.unit
 @pytest.mark.parametrize("grid, move, player_id, expected_result", [
-    (np.array([1, 1, 0, 0, 0, 0, 0, 0, 0]), 2, 1, 1),
-    (np.array([2, 2, 0, 0, 0, 0, 0, 0, 0]), 2, 2, 2),
-    (np.array([1, 1, 0, 0, 0, 0, 0, 0, 0]), 3, 1, -1),
-    (np.array([1, 0, 0, 1, 0, 0, 0, 0, 0]), 6, 1, 1),
-    (np.array([2, 0, 0, 2, 0, 0, 0, 0, 0]), 6, 2, 2),
-    (np.array([1, 0, 0, 1, 0, 0, 0, 0, 0]), 7, 1, -1),
-    (np.array([1, 0, 0, 0, 1, 0, 0, 0, 0]), 8, 1, 1),
-    (np.array([2, 0, 0, 0, 2, 0, 0, 0, 0]), 8, 2, 2),
-    (np.array([1, 0, 0, 0, 1, 0, 0, 0, 0]), 7, 1, -1)
+    (np.array([1, 1, 0, 0, 0, 0, 0, 0, 0]), Action.top_right, 1, 1),
+    (np.array([2, 2, 0, 0, 0, 0, 0, 0, 0]), Action.top_right, 2, 2),
+    (np.array([1, 1, 0, 0, 0, 0, 0, 0, 0]), Action.middle_left, 1, -1),
+    (np.array([1, 0, 0, 1, 0, 0, 0, 0, 0]), Action.bottom_left, 1, 1),
+    (np.array([2, 0, 0, 2, 0, 0, 0, 0, 0]), Action.bottom_left, 2, 2),
+    (np.array([1, 0, 0, 1, 0, 0, 0, 0, 0]), Action.bottom_center, 1, -1),
+    (np.array([1, 0, 0, 0, 1, 0, 0, 0, 0]), Action.bottom_right, 1, 1),
+    (np.array([2, 0, 0, 0, 2, 0, 0, 0, 0]), Action.bottom_right, 2, 2),
+    (np.array([1, 0, 0, 0, 1, 0, 0, 0, 0]), Action.bottom_center, 1, -1)
 ])
 def test_game_detects_victory_correctly(grid, move, player_id, expected_result):
     game = Game(CPUAgent(), CPUAgent())
@@ -72,15 +72,15 @@ def test_game_detects_grid_is_full_correctly(grid, expected_grid_is_full, expect
 @pytest.mark.unit
 def test_game_traces_game_sequence_correctly():
     game = Game(CPUAgent(), CPUAgent())
-    game.apply_move(0, 1)
-    game.apply_move(1, 2)
-    game.apply_move(2, 2)
-    game.apply_move(3, 2)
-    game.apply_move(4, 2)
-    game.apply_move(5, 1)
-    game.apply_move(6, 1)
-    game.apply_move(7, 1)
-    game.apply_move(8, 2)
+    game.apply_move(Action.top_left, 1)
+    game.apply_move(Action.top_center, 2)
+    game.apply_move(Action.top_right, 2)
+    game.apply_move(Action.middle_left, 2)
+    game.apply_move(Action.middle_center, 2)
+    game.apply_move(Action.middle_right, 1)
+    game.apply_move(Action.bottom_left, 1)
+    game.apply_move(Action.bottom_center, 1)
+    game.apply_move(Action.bottom_right, 2)
 
     expected_game_sequence = np.array([
         [0, 0, 0, 0, 0, 0, 0, 0, 0],

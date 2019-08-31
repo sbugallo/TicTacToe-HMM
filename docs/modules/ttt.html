@@ -201,8 +201,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ttt.models.html">ttt.models package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ttt.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.models.html#module-ttt.models.action">ttt.models.action module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ttt.models.html#module-ttt.models.agent">ttt.models.agent module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ttt.models.html#module-ttt.models.game">ttt.models.game module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ttt.models.html#module-ttt.models.reward">ttt.models.reward module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ttt.models.html#module-ttt.models.state">ttt.models.state module</a></li>
 </ul>
 </li>
@@ -296,8 +298,8 @@
 <span id="ttt-rewarding-module"></span><h2>ttt.rewarding module<a class="headerlink" href="#module-ttt.rewarding" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="ttt.rewarding.get_move">
-<code class="sig-prename descclassname">ttt.rewarding.</code><code class="sig-name descname">get_move</code><span class="sig-paren">(</span><em class="sig-param">state_1: ttt.models.state.State</em>, <em class="sig-param">state_2: ttt.models.state.State</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../_modules/ttt/rewarding.html#get_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.rewarding.get_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the different cell between <cite>state_1</cite> and <cite>state_2</cite>.</p>
+<code class="sig-prename descclassname">ttt.rewarding.</code><code class="sig-name descname">get_move</code><span class="sig-paren">(</span><em class="sig-param">state_1: ttt.models.state.State</em>, <em class="sig-param">state_2: ttt.models.state.State</em><span class="sig-paren">)</span> &#x2192; ttt.models.action.Action<a class="reference internal" href="../_modules/ttt/rewarding.html#get_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ttt.rewarding.get_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the move applied to go from <cite>state_1</cite> to <cite>state_2</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -306,10 +308,10 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>move</strong> – Cell that differs from one state to the other.</p>
+<dd class="field-even"><p><strong>move</strong> – Move applied to go from <cite>state_1</cite> to <cite>state_2</cite>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>int</p>
+<dd class="field-odd"><p>ttt.models.Action</p>
 </dd>
 </dl>
 </dd></dl>

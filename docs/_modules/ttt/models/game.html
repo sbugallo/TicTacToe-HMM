@@ -163,6 +163,7 @@
 <span class="kn">from</span> <span class="nn">colorama</span> <span class="k">import</span> <span class="n">init</span><span class="p">,</span> <span class="n">Fore</span>
 
 <span class="kn">from</span> <span class="nn">.agent</span> <span class="k">import</span> <span class="n">Agent</span>
+<span class="kn">from</span> <span class="nn">.action</span> <span class="k">import</span> <span class="n">Action</span>
 
 
 <div class="viewcode-block" id="Game"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.game.Game">[docs]</a><span class="k">class</span> <span class="nc">Game</span><span class="p">:</span>
@@ -198,19 +199,19 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">game_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">copy</span><span class="p">()]</span>
 
-<div class="viewcode-block" id="Game.apply_move"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.game.Game.apply_move">[docs]</a>    <span class="k">def</span> <span class="nf">apply_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">move</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">player_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Game.apply_move"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.game.Game.apply_move">[docs]</a>    <span class="k">def</span> <span class="nf">apply_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">move</span><span class="p">:</span> <span class="n">Action</span><span class="p">,</span> <span class="n">player_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Commits the move over the board.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        move: int</span>
-<span class="sd">            Cell to mark.</span>
+<span class="sd">        move: ttt.models.Action</span>
+<span class="sd">            Move to be performed.</span>
 <span class="sd">        player_id: int</span>
 <span class="sd">            Value to apply.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">[</span><span class="n">move</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">player_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">[</span><span class="n">move</span><span class="o">.</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">player_id</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">player_1</span><span class="o">.</span><span class="n">update_grid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">player_2</span><span class="o">.</span><span class="n">update_grid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
