@@ -61,6 +61,18 @@ episodic task, being each episode a round.
 
 In a continuous task, there is not a terminal state. This kind of tasks will never end.
 
+Discount Factor
+^^^^^^^^^^^^^^^
+
+In continuous tasks we do not have a final time step :math:`T`, so the total reward will sum to infinity. To maximize
+this return, a discount factor :math:`\gamma` is introduced:
+
+:math:`R=\sum_{k=0}^\infty\gamma^kr_{t+k+1}`
+
+This factor decides how much importance we give to the future rewards and immediate rewards. The value of the discount
+factor lies within 0 to 1. A discount factor of 0 means that immediate rewards are more important, while a factor of 1
+would mean that furure rewards are more important. Typical values of the discount factor are between 0.2 and 0.8.
+
 Policy Function
 ---------------
 
@@ -71,9 +83,13 @@ that results in the correct action to perform in each state maximizing the rewar
 State Value Function
 --------------------
 
-A state value function (or simply value function) specifies how good it is for an agent to be in a particular state with a
-policy :math:`\pi`. The value functions is defined as
-:math:`V^\pi(s)=\mathbb{E}_\pi [R_t|s_t=s]=\mathbb{E}_\pi [\sum_{k=1}^{T}r_{t+k}|s_t=s]`. This is the expected return
+A state value function (or simply value function) specifies how good it is for an agent to be in a particular state with
+a policy :math:`\pi`. The value functions is defined as :math:`V^\pi(s)=\mathbb{E}_\pi [R_t|s_t=s]`:
+
+- For episodic tasks: :math:`V^\pi(s)=\mathbb{E}_\pi [\sum_{k=1}^{T}r_{t+k}|s_t=s]`.
+- For continuous tasks: :math:`V^\pi(s)=\mathbb{E}_\pi [\sum_{k=0}^{\infty}\gamma^kr_{t+k+1}|s_t=s]`.
+
+This is the expected return
 starting from state :math:`s` according to policy :math:`\pi`.
 
 Based on the value of each state, we can tell how good it is for our agent to be in each one.
@@ -90,8 +106,10 @@ State-action Value function (Q function)
 
 A state-action value function is also called the Q function. It specifies how good it is for an agent to perform a
 particular action in a state with a policy :math:`\pi`. The Q function is defined as
+:math:`Q^\pi(s,a)=\mathbb{E}_\pi [R_t|s_t=s]`:
 
-:math:`Q^\pi(s,a)=\mathbb{E}_\pi [R_t|s_t=s]=\mathbb{E}_\pi [\sum_{k=1}^{T}r_{t+k}|s_t=s,a_t=a]`
+- For episodic tasks: :math:`Q^\pi(s,a)=\mathbb{E}_\pi [\sum_{k=1}^{T}r_{t+k}|s_t=s,a_t=a]`
+- For continuous tasks: :math:`Q^\pi(s,a)=\mathbb{E}_\pi [\sum_{k=0}^{\infty}\gamma^kr_{t+k+1}|s_t=s,a_t=a]`
 
 This function specifies the expected return starting from state :math:`s` performing action :math:`a` according to policy
 :math:`\pi`.
@@ -148,8 +166,10 @@ Policy Iteration
 ----------------
 
 We start with the random policy, then we find the value function of that policy; if the value function is not optimal,
-then we find the new improved policy. We repeat this process till we find the optimal policy. There are two steps in
-policy iteration:
+then we find the new improved policy. We repeat this process till we find the optimal policy. The steps involved in
+policy iteration are as follows:
 
-1. Policy evaluation
-2. Policy improvement
+1. First, we initialie some random policy.
+2. Then, we find the value function for that random policy and evaluate to check if it is optimal (policy evaluation).
+3. If it is not optimal, we find a new improved policy (policy improvement).
+4. We repeat steps till we find an optimal policy.

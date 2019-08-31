@@ -23,7 +23,6 @@
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 0;
     padding-bottom: 2em;
     width: 300px;
     overflow-x: hidden;
@@ -78,4 +77,29 @@ p, li {
 
 h1 {
     color: #024c8c !important;
+}
+
+@media (min-width: 769px) {
+  .wy-nav-side {
+    left: 0;
+  }
+}
+
+@media (max-width: 768px){
+    .wy-nav-side.shift {
+        width: unset !important;
+    }
+
+    .wy-side-scroll {
+        width: fit-content;
+    }
+
+    .wy-nav-content-wrap.shift {
+        position: fixed;
+        min-width: 100%;
+        left: 300px;
+        top: 0;
+        height: 100%;
+        overflow: hidden;
+    }
 }

@@ -230,24 +230,24 @@
             <span class="c1"># Overwrite new State with the saved one</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CPUAgent.get_random_move"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.agent.CPUAgent.get_random_move">[docs]</a>    <span class="k">def</span> <span class="nf">get_random_move</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="CPUAgent.get_random_move"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.agent.CPUAgent.get_random_move">[docs]</a>    <span class="k">def</span> <span class="nf">get_random_move</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Action</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a random move.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        move: int</span>
+<span class="sd">        move: ttt.models.Action</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">number_of_possible_moves</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="o">.</span><span class="n">next_states_transitions</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="o">.</span><span class="n">next_states_transitions</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_of_possible_moves</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span></div>
+        <span class="k">return</span> <span class="n">Action</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="o">.</span><span class="n">next_states_transitions</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_of_possible_moves</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)])</span></div>
 
-<div class="viewcode-block" id="CPUAgent.get_best_move"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.agent.CPUAgent.get_best_move">[docs]</a>    <span class="k">def</span> <span class="nf">get_best_move</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="CPUAgent.get_best_move"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.agent.CPUAgent.get_best_move">[docs]</a>    <span class="k">def</span> <span class="nf">get_best_move</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Action</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates a new move using the previous knowledge.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        move: int</span>
+<span class="sd">        move: ttt.models.Action</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="o">.</span><span class="n">get_best_move</span><span class="p">()</span></div>
 
@@ -386,7 +386,7 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
-<div class="viewcode-block" id="HumanAgent.get_next_move"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.agent.HumanAgent.get_next_move">[docs]</a>    <span class="k">def</span> <span class="nf">get_next_move</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="viewcode-block" id="HumanAgent.get_next_move"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.agent.HumanAgent.get_next_move">[docs]</a>    <span class="k">def</span> <span class="nf">get_next_move</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Action</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the user move.</span>
 
