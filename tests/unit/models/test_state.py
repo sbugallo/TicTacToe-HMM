@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from numpy.testing import assert_array_equal
 
-from ttt.models import State
+from ttt.models import State, Actions
 
 
 @pytest.mark.unit
@@ -11,7 +11,9 @@ def test_state_initializes_correctly():
     state = State(grid)
 
     assert_array_equal(state.grid, grid)
-    assert_array_equal(state.next_states_transitions, np.array([0, 1, 2, 3, 4, 8]))
+    assert_array_equal(state.next_states_transitions, np.array([Actions.top_left, Actions.top_center, Actions.top_right,
+                                                                Actions.middle_left, Actions.middle_center,
+                                                                Actions.bottom_right]))
     assert_array_equal(state.next_states_values, np.zeros(6))
 
 
@@ -29,7 +31,11 @@ def test_state_compute_next_states_correctness():
     state = State()
     state.grid = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0])
     state._compute_next_states()
-    assert_array_equal(state.next_states_transitions, np.array([0, 1, 2, 3, 4, 5, 6, 7, 8]))
+    assert_array_equal(state.next_states_transitions, np.array([Actions.top_left, Actions.top_center,
+                                                                Actions.top_right, Actions.middle_left,
+                                                                Actions.middle_center, Actions.middle_right,
+                                                                Actions.bottom_left, Actions.bottom_center,
+                                                                Actions.bottom_right]))
     assert_array_equal(state.next_states_values, np.zeros(9))
 
 
@@ -37,7 +43,7 @@ def test_state_compute_next_states_correctness():
 def test_state_update_transition_weight_correctness():
     grid = np.array([0, 1, 1, 2, 2, 1, 1, 2, 0])
     state = State(grid)
-    state.update_transition_weight(8, -3)
+    state.update_transition_weight(Actions.bottom_right, -3)
     assert_array_equal(state.next_states_values, np.array([0, -3]))
 
 
@@ -45,9 +51,9 @@ def test_state_update_transition_weight_correctness():
 def test_state_get_next_move():
     grid = np.array([0, 1, 1, 2, 2, 1, 1, 2, 0])
     state = State(grid)
-    state.update_transition_weight(8, -3)
+    state.update_transition_weight(Actions.bottom_right, -3)
 
-    assert state.get_best_move() == 0
+    assert state.get_best_move() == Actions.top_left
 
 
 @pytest.mark.unit
@@ -73,5 +79,5 @@ def test_state_deserialize():
     })
 
     assert_array_equal(state.grid, np.array([0, 1, 1, 2, 2, 1, 1, 2, 0]))
-    assert_array_equal(state.next_states_transitions, np.array([0, 8]))
+    assert_array_equal(state.next_states_transitions, np.array([Actions.top_left, Actions.bottom_right]))
     assert_array_equal(state.next_states_values, np.array([0, 0]))

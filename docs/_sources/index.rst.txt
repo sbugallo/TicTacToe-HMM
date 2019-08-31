@@ -1,4 +1,4 @@
-TicTacToe-MDP
+TicTacToe-HMM
 =============
 
 .. image:: _static/logo-color.png

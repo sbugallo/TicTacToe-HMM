@@ -7,6 +7,7 @@ import numpy as np
 from loguru import logger
 
 from .state import State
+from .actions import Actions
 
 
 class Agent:
@@ -233,11 +234,11 @@ class HumanAgent(Agent):
         -------
         move: int
         """
-        possible_moves = [cell_id + 1 for cell_id in self.current_state.next_states_transitions]
+        possible_moves = [action.value + 1 for action in self.current_state.next_states_transitions]
         logger.info(f"Which cell do you want to mark? {possible_moves}: ")
         move = int(input())
         while move not in possible_moves:
             logger.info(f"The cell is already marked. Pleas, select another cell.\n\n"
                         f"Which cell do you want to mark? {possible_moves}: ")
             move = int(input())
-        return move - 1
+        return Actions(move - 1)
