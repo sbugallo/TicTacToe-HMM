@@ -78,6 +78,6 @@ class State:
         self.next_states_values = np.array(json_data["next_states_values"])
         self.next_states_transitions = np.array([Action(move) for move in json_data["next_states_transitions"]])
 
-    def get_best_move(self) -> int:
+    def get_best_move(self) -> Action:
         """Decides on the best available move based on the transition weights."""
         return self.next_states_transitions[self.next_states_values.argmax()]

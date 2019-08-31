@@ -21,6 +21,7 @@ def sample_game():
 def test_get_move_correctness(state_1, state_2, expected_move):
     assert expected_move == get_move(state_1, state_2)
 
+
 @pytest.mark.unit
 def test_get_move_raises_value_error_if_cannot_go_from_state1_to_state2():
     with pytest.raises(ValueError, match="Cannot go from state_1"):

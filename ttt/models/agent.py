@@ -70,24 +70,24 @@ class CPUAgent(Agent):
             # Overwrite new State with the saved one
             self.current_state = self.get_state(self.grid)
 
-    def get_random_move(self) -> int:
+    def get_random_move(self) -> Action:
         """
         Generates a random move.
 
         Returns
         -------
-        move: int
+        move: ttt.models.Action
         """
         number_of_possible_moves = len(self.current_state.next_states_transitions)
-        return self.current_state.next_states_transitions[random.randint(0, number_of_possible_moves - 1)]
+        return Action(self.current_state.next_states_transitions[random.randint(0, number_of_possible_moves - 1)])
 
-    def get_best_move(self) -> int:
+    def get_best_move(self) -> Action:
         """
         Generates a new move using the previous knowledge.
 
         Returns
         -------
-        move: int
+        move: ttt.models.Action
         """
         return self.current_state.get_best_move()
 
@@ -226,7 +226,7 @@ class HumanAgent(Agent):
     def __init__(self):
         super().__init__()
 
-    def get_next_move(self) -> int:
+    def get_next_move(self) -> Action:
         """
         Gets the user move.
 
