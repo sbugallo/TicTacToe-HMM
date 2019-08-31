@@ -23,8 +23,8 @@ def test_game_initializes_correctly():
 
 @pytest.mark.unit
 @pytest.mark.parametrize("move, player_id, expected_result", [
-    (Actions(1), 1, np.array([0, 1, 0, 0, 0, 0, 0, 0, 0])),
-    (Actions(8), 2, np.array([0, 0, 0, 0, 0, 0, 0, 0, 2])),
+    (Actions.top_center, 1, np.array([0, 1, 0, 0, 0, 0, 0, 0, 0])),
+    (Actions.bottom_right, 2, np.array([0, 0, 0, 0, 0, 0, 0, 0, 2])),
 ])
 def test_game_applies_move_correctly(move, player_id, expected_result):
     game = Game(CPUAgent(), CPUAgent())
@@ -34,15 +34,15 @@ def test_game_applies_move_correctly(move, player_id, expected_result):
 
 @pytest.mark.unit
 @pytest.mark.parametrize("grid, move, player_id, expected_result", [
-    (np.array([1, 1, 0, 0, 0, 0, 0, 0, 0]), Actions(2), 1, 1),
-    (np.array([2, 2, 0, 0, 0, 0, 0, 0, 0]), Actions(2), 2, 2),
-    (np.array([1, 1, 0, 0, 0, 0, 0, 0, 0]), Actions(3), 1, -1),
-    (np.array([1, 0, 0, 1, 0, 0, 0, 0, 0]), Actions(6), 1, 1),
-    (np.array([2, 0, 0, 2, 0, 0, 0, 0, 0]), Actions(6), 2, 2),
-    (np.array([1, 0, 0, 1, 0, 0, 0, 0, 0]), Actions(7), 1, -1),
-    (np.array([1, 0, 0, 0, 1, 0, 0, 0, 0]), Actions(8), 1, 1),
-    (np.array([2, 0, 0, 0, 2, 0, 0, 0, 0]), Actions(8), 2, 2),
-    (np.array([1, 0, 0, 0, 1, 0, 0, 0, 0]), Actions(7), 1, -1)
+    (np.array([1, 1, 0, 0, 0, 0, 0, 0, 0]), Actions.top_right, 1, 1),
+    (np.array([2, 2, 0, 0, 0, 0, 0, 0, 0]), Actions.top_right, 2, 2),
+    (np.array([1, 1, 0, 0, 0, 0, 0, 0, 0]), Actions.middle_left, 1, -1),
+    (np.array([1, 0, 0, 1, 0, 0, 0, 0, 0]), Actions.bottom_left, 1, 1),
+    (np.array([2, 0, 0, 2, 0, 0, 0, 0, 0]), Actions.bottom_left, 2, 2),
+    (np.array([1, 0, 0, 1, 0, 0, 0, 0, 0]), Actions.bottom_center, 1, -1),
+    (np.array([1, 0, 0, 0, 1, 0, 0, 0, 0]), Actions.bottom_right, 1, 1),
+    (np.array([2, 0, 0, 0, 2, 0, 0, 0, 0]), Actions.bottom_right, 2, 2),
+    (np.array([1, 0, 0, 0, 1, 0, 0, 0, 0]), Actions.bottom_center, 1, -1)
 ])
 def test_game_detects_victory_correctly(grid, move, player_id, expected_result):
     game = Game(CPUAgent(), CPUAgent())

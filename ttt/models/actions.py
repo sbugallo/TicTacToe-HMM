@@ -1,21 +1,8 @@
-from enum import IntEnum, Enum
+from enum import Enum
 
 
 class Actions(Enum):
-    """
-    Models all possible actions
-
-    Attributes
-    top_left: int
-    top_center: int
-    top_right: int
-    middle_left: int
-    middle_center: int
-    middle_right: int
-    bottom_left: int
-    bottom_center: int
-    bottom_right: int
-    """
+    """Models all possible actions."""
     top_left: int = 0
     top_center: int = 1
     top_right: int = 2

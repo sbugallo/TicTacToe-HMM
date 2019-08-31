@@ -9,6 +9,14 @@ ttt.models package
 Submodules
 ----------
 
+ttt.models.actions module
+-------------------------
+
+.. automodule:: ttt.models.actions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 ttt.models.agent module
 -----------------------
 

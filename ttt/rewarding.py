@@ -1,8 +1,6 @@
-import math
-
 import numpy as np
 
-from .models import Game, CPUAgent, State, Actions
+from .models import Game, CPUAgent, State, Actions, Rewards
 
 
 def get_move(state_1: State, state_2: State) -> Actions:
@@ -70,15 +68,15 @@ def rewarding(game: Game, player_number: int, lr: float) -> CPUAgent:
 
             # Win -> positive reward
             if game.result == player_number:
-                agent_current_state.update_transition_weight(move, math.exp(-(i + 1)) * lr)
+                agent_current_state.update_transition_weight(move, Rewards.win(i, lr))
 
             # Lose -> negative reward
             else:
-                agent_current_state.update_transition_weight(move, -(math.exp(-(i + 1)) * lr / 2))
+                agent_current_state.update_transition_weight(move, Rewards.defeat(i, lr))
 
         # Tie -> small positive reward
         else:
-            agent_current_state.update_transition_weight(move, math.exp(-(i + 1)) * lr / 10)
+            agent_current_state.update_transition_weight(move, Rewards.tie(i, lr))
 
         cpu_agent.update_state(agent_current_state)
 

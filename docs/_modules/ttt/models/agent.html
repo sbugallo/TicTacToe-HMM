@@ -167,6 +167,7 @@
 <span class="kn">from</span> <span class="nn">loguru</span> <span class="k">import</span> <span class="n">logger</span>
 
 <span class="kn">from</span> <span class="nn">.state</span> <span class="k">import</span> <span class="n">State</span>
+<span class="kn">from</span> <span class="nn">.actions</span> <span class="k">import</span> <span class="n">Actions</span>
 
 
 <div class="viewcode-block" id="Agent"><a class="viewcode-back" href="../../../modules/ttt.models.html#ttt.models.agent.Agent">[docs]</a><span class="k">class</span> <span class="nc">Agent</span><span class="p">:</span>
@@ -393,14 +394,14 @@
 <span class="sd">        -------</span>
 <span class="sd">        move: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">possible_moves</span> <span class="o">=</span> <span class="p">[</span><span class="n">cell_id</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">cell_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="o">.</span><span class="n">next_states_transitions</span><span class="p">]</span>
+        <span class="n">possible_moves</span> <span class="o">=</span> <span class="p">[</span><span class="n">action</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span><span class="o">.</span><span class="n">next_states_transitions</span><span class="p">]</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Which cell do you want to mark? </span><span class="si">{possible_moves}</span><span class="s2">: &quot;</span><span class="p">)</span>
         <span class="n">move</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
         <span class="k">while</span> <span class="n">move</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">possible_moves</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;The cell is already marked. Pleas, select another cell.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
                         <span class="n">f</span><span class="s2">&quot;Which cell do you want to mark? </span><span class="si">{possible_moves}</span><span class="s2">: &quot;</span><span class="p">)</span>
             <span class="n">move</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">move</span> <span class="o">-</span> <span class="mi">1</span></div></div>
+        <span class="k">return</span> <span class="n">Actions</span><span class="p">(</span><span class="n">move</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
